@@ -57,7 +57,6 @@ struct HomeScreen: View {
     }
 }
 
-// Custom view for Divider with Text
 struct DividerWithText: View {
     let text: String
     var fontSize: CGFloat = 17
@@ -75,7 +74,6 @@ struct DividerWithText: View {
     }
 }
 
-// Line view
 struct Line: View {
     var body: some View {
         Rectangle()

@@ -9,6 +9,7 @@ import Foundation
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import FacebookLogin
 
 
 class Authenticator: ObservableObject {
@@ -72,7 +73,7 @@ class Authenticator: ObservableObject {
                 }
                 
                 if let user = result?.user {
-                    self?.currentUser = result?.user
+                    self?.currentUser = user
                     self?.isAuthenticated = true
                     print("Authenticated in Firebase")
                     completion(.success(user))
@@ -81,17 +82,44 @@ class Authenticator: ObservableObject {
         }
     }
     
-    func signInWithFacebook(){}
-    
-    func signOut(completion: @escaping (Result<Void, Error>) -> Void) {
-            do {
-                try Auth.auth().signOut()
-                completion(.success(()))
-            } catch let signOutError as NSError {
-                print("Error signing out: \(signOutError)")
-                completion(.failure(signOutError))
+    func signInWithFacebook(completion: @escaping (Result<User, Error>) -> Void) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["email"], from: nil) { result, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let accessToken = AccessToken.current else {
+                completion(.failure(NSError(domain: "FacebookLoginError", code: 0, userInfo: nil)))
+                return
+            }
+            
+            let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
+                }
+                if let user = authResult?.user {
+                    self.currentUser = user
+                    self.isAuthenticated = true
+                    completion(.success((user)))
+                }
+                
             }
         }
+    }
+    
+    func signOut(completion: @escaping (Result<Void, Error>) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(.success(()))
+        } catch let signOutError as NSError {
+            print("Error signing out: \(signOutError)")
+            completion(.failure(signOutError))
+        }
+    }
 }
 
 func getTopViewController() -> UIViewController? {

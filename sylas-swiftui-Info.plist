@@ -10,8 +10,17 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.googleusercontent.apps.247911237714-o0qerc7505n1jhaqajsfoulimncemo2b</string>
+				<string>fb398063742569942</string>
 			</array>
 		</dict>
 	</array>
+	<key>FacebookAppID</key>
+	<string>398063742569942</string>
+	<key>FacebookClientToken</key>
+	<string>c8df3b20f8e2cde53c9f8ea33bfddc9f</string>
+	<key>FacebookDisplayName</key>
+	<string>Sylas Ai</string>
+	<key>NSAppTransportSecurity</key>
+	<dict/>
 </dict>
 </plist>

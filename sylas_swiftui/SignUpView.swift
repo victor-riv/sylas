@@ -33,8 +33,19 @@ struct SignUpView: View {
                             }
                         })
                         
-                        IconButton(iconName: "facebook",
-                                   fromAsset: true,action: {})
+                        IconButton(iconName: "facebook", fromAsset: true, action: {
+                            authenticator.signInWithFacebook{ result in
+                                switch result {
+                                case .success(let user):
+                                    print("Signed in successfully with user: \(user.uid)")
+                                    showAlert = true
+                                    alertMessage = "You have successfully signed in with Facebook"
+                                    
+                                case .failure(let error):
+                                    print("Error signing in: \(error.localizedDescription)")
+                                }
+                            }
+                        })
                         
                     }
                     .padding(.vertical, 20)
