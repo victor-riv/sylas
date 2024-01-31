@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E26574C2B69FD7300599D76 /* CustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E26574B2B69FD7300599D76 /* CustomNavBar.swift */; };
+		3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */; };
+		3E2657502B6A08D900599D76 /* DestinationCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E26574F2B6A08D900599D76 /* DestinationCard.swift */; };
 		3E269EB62B699EB1004DFF1C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3E269EB52B699EB1004DFF1C /* GoogleService-Info.plist */; };
 		3E269EB92B699F15004DFF1C /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3E269EB82B699F15004DFF1C /* FirebaseAnalytics */; };
 		3E269EBB2B699F15004DFF1C /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3E269EBA2B699F15004DFF1C /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -82,6 +85,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E26574B2B69FD7300599D76 /* CustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavBar.swift; sourceTree = "<group>"; };
+		3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggedInHomeView.swift; sourceTree = "<group>"; };
+		3E26574F2B6A08D900599D76 /* DestinationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCard.swift; sourceTree = "<group>"; };
 		3E269EB52B699EB1004DFF1C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3E269EC32B69A15D004DFF1C /* authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authenticator.swift; sourceTree = "<group>"; };
 		3E5CA6D42B689899008AF2FA /* sylas_swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sylas_swiftui.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -204,6 +210,9 @@
 				3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */,
 				3E269EB52B699EB1004DFF1C /* GoogleService-Info.plist */,
 				3E5CA6DD2B68989A008AF2FA /* Preview Content */,
+				3E26574B2B69FD7300599D76 /* CustomNavBar.swift */,
+				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
+				3E26574F2B6A08D900599D76 /* DestinationCard.swift */,
 			);
 			path = sylas_swiftui;
 			sourceTree = "<group>";
@@ -363,6 +372,9 @@
 				3E269EC42B69A15D004DFF1C /* authenticator.swift in Sources */,
 				3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */,
 				3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */,
+				3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */,
+				3E26574C2B69FD7300599D76 /* CustomNavBar.swift in Sources */,
+				3E2657502B6A08D900599D76 /* DestinationCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
