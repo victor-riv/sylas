@@ -16,12 +16,12 @@ struct ItineraryView: View {
             ScrollView {
                 VStack(alignment: .leading) {
                     DestinationCardView()
-                    HStack (alignment: .bottom, spacing: 65){
+                    HStack (alignment: .bottom){
                         VStack (alignment: .leading,spacing: 12){
                             HStack (spacing: 12) {
                                 VStack (alignment: .leading) {
-                                    Text("Plan a trip in Madrid")
-                                        .lineLimit(1)
+                                    Text("Itinerary for Madrid")
+                                        
                                     Text("from Feb 2-5, 2024").font(.footnote)
                                 }
                             }
@@ -48,7 +48,9 @@ struct ItineraryView: View {
                                         .cornerRadius(10)
                                 })
                             }
+                            
                         }
+                        Spacer()
                         Image("map")
                             .resizable()
                             .scaledToFill()
@@ -59,6 +61,7 @@ struct ItineraryView: View {
                                     .stroke(Color(red: 52/255.0, green: 51/255.0, blue: 50/255.0))
                             )
                     }
+                    
                     .padding(.bottom)
                     VStack (spacing: 2){
                         LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
@@ -116,4 +119,5 @@ struct LocationTile: View {
 #Preview {
     ItineraryView()
         .preferredColorScheme(.dark)
+        .environmentObject(Authenticator.shared)
 }
