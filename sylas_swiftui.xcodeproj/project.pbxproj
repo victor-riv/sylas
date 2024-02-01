@@ -53,6 +53,7 @@
 		3E5CA6DC2B68989A008AF2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */; };
 		3E5CA6DF2B68989A008AF2FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA6DE2B68989A008AF2FA /* Preview Assets.xcassets */; };
 		3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E72E1F02B6955CB004136BB /* SignUpView.swift */; };
+		3ECEB6ED2B6B12A500A1C5F4 /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */; };
 		3EEC50952B69AB20003D3A3E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50942B69AB20003D3A3E /* FirebaseAnalytics */; };
 		3EEC50972B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50962B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		3EEC50992B69AB20003D3A3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50982B69AB20003D3A3E /* FirebaseAnalyticsSwift */; };
@@ -96,6 +97,7 @@
 		3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E5CA6DE2B68989A008AF2FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		3E72E1F02B6955CB004136BB /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
 		3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "sylas-swiftui-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -202,6 +204,7 @@
 		3E5CA6D62B689899008AF2FA /* sylas_swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				3ECEB6EB2B6B124A00A1C5F4 /* components */,
 				3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */,
 				3E269EC22B69A14A004DFF1C /* authentication */,
 				3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */,
@@ -212,7 +215,7 @@
 				3E5CA6DD2B68989A008AF2FA /* Preview Content */,
 				3E26574B2B69FD7300599D76 /* CustomNavBar.swift */,
 				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
-				3E26574F2B6A08D900599D76 /* DestinationCard.swift */,
+				3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */,
 			);
 			path = sylas_swiftui;
 			sourceTree = "<group>";
@@ -223,6 +226,14 @@
 				3E5CA6DE2B68989A008AF2FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		3ECEB6EB2B6B124A00A1C5F4 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				3E26574F2B6A08D900599D76 /* DestinationCard.swift */,
+			);
+			path = components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,6 +379,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3ECEB6ED2B6B12A500A1C5F4 /* ItineraryView.swift in Sources */,
 				3E5CA6DA2B689899008AF2FA /* HomeScreen.swift in Sources */,
 				3E269EC42B69A15D004DFF1C /* authenticator.swift in Sources */,
 				3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */,

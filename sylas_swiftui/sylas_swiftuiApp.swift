@@ -52,7 +52,7 @@ struct sylas_swiftuiApp: App {
     @StateObject private var authenticator = Authenticator.shared
     var body: some Scene {
         WindowGroup {
-            HomeScreen()
+            ItineraryView()
                 .preferredColorScheme(.dark)
                 .environmentObject(authenticator)
         }
