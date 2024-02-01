@@ -48,13 +48,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct sylas_swiftuiApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var authenticator = Authenticator.shared
     
-    @StateObject private var authenticator = Authenticator.shared
+    
     var body: some Scene {
         WindowGroup {
-            ItineraryView()
-                .preferredColorScheme(.dark)
-                .environmentObject(authenticator)
+            if authenticator.isAuthenticated {
+                // Replace with LoggedInView
+                ItineraryView()
+                    .environmentObject(authenticator)
+                    .preferredColorScheme(.dark)
+            } else {
+                UnauthenticatedHomeView()
+                    .environmentObject(authenticator)
+                    .preferredColorScheme(.dark)
+            }
         }
     }
 }

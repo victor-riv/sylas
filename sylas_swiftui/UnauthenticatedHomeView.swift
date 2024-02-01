@@ -1,6 +1,8 @@
 import SwiftUI
 
-struct HomeScreen: View {
+struct UnauthenticatedHomeView: View {
+    @EnvironmentObject var authenticator: Authenticator
+    @State private var isLinkActive = false
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
@@ -85,6 +87,6 @@ struct Line: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeScreen().preferredColorScheme(.dark)
+        UnauthenticatedHomeView().preferredColorScheme(.dark)
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItineraryView: View {
     @State private var toggledID: Int = 1
+    @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
         NavigationStack {
@@ -63,6 +64,10 @@ struct ItineraryView: View {
                         LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
                         
                         LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
+                        
+                        Button(action: authenticator.signOut) {
+                            Text("Sign Out")
+                        }
                         
                     }
                     

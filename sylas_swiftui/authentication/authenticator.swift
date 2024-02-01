@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
@@ -18,25 +19,43 @@ class Authenticator: ObservableObject {
     @Published var currentUser: User?
     @Published var isAuthenticated: Bool = false
     
+    private var cancellables = Set<AnyCancellable>()
+
     private init(){
-        currentUser = Auth.auth().currentUser
-        isAuthenticated = currentUser != nil
-    }
-    
-    func signUpWithEmailAndPassword(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] authResult, error in
-            if let error = error {
-                print("FML")
-                completion(.failure(error))
-            }
-            if let user = authResult?.user {
-                print("Success babyyyyy")
-                self?.currentUser = user
-                self?.isAuthenticated = true
-                completion(.success(user))
-            }
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+            self?.isAuthenticated = user != nil
+            self?.currentUser = user
         }
     }
+    
+    func signUp(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void) {
+        createUser(email: email, password: password)
+            .sink(receiveCompletion: { result in
+                if case .failure(let error) = result {
+                    completion(.failure(error))
+                }
+            }, receiveValue: { user in
+                completion(.success(user))
+            })
+            .store(in: &cancellables)
+    }
+    
+    private func createUser(email: String, password: String) -> AnyPublisher<User, Error> {
+        return Future<User, Error> { promise in
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                if let error = error {
+                    promise(.failure(error))
+                } else if let user = authResult?.user {
+                    promise(.success(user))
+                } else {
+                    let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred"])
+                    promise(.failure(error))
+                }
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+    
     
     func signInWithGoogle(completion: @escaping (Result<User, Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
@@ -111,13 +130,14 @@ class Authenticator: ObservableObject {
         }
     }
     
-    func signOut(completion: @escaping (Result<Void, Error>) -> Void) {
+    func signOut() {
         do {
             try Auth.auth().signOut()
-            completion(.success(()))
+            self.isAuthenticated = false
+            self.currentUser = nil
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError)")
-            completion(.failure(signOutError))
+            
         }
     }
 }

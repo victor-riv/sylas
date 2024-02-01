@@ -67,16 +67,24 @@ struct SignUpView: View {
         .navigationBarTitleDisplayMode(.inline)
         .contentShape(Rectangle())
     }
+    
 }
 
+
 struct LoginFormView: View {
+    private enum Field: Int, CaseIterable {
+        case email, password
+    }
     @State private var email: String = ""
     @State private var password: String = ""
+    @FocusState private var focusedField: Field?
     @EnvironmentObject var authenticator: Authenticator
+    
     
     var body: some View {
         VStack (spacing: 20 ){
             TextField("Email", text: $email)
+                .focused($focusedField, equals: .email)
                 .keyboardType(.emailAddress)
                 .autocapitalization(.none)
                 .padding()
@@ -85,6 +93,7 @@ struct LoginFormView: View {
                 .padding(.horizontal)
             
             SecureField("Password", text: $password)
+                .focused($focusedField, equals: .password)
                 .padding()
                 .background(Color(.secondarySystemBackground))
                 .cornerRadius(10)
@@ -105,11 +114,17 @@ struct LoginFormView: View {
     }
     
     func submitLogin() {
-        print("Login with Email: \(email), Password: \(password)")
+        focusedField = nil
         
-        authenticator.signUpWithEmailAndPassword(email: email.trimmingCharacters(in: .whitespacesAndNewlines), password: password.trimmingCharacters(in: .whitespacesAndNewlines)) { result in
-            // Navigate the user to the LoggedInView
-            print("Maleka rules")
+        authenticator.signUp(email: email, password: password) { result in
+            switch result {
+            case .success(let user):
+                print("Signed up user: \(user.uid)")
+                
+                
+            case .failure(let error):
+                print("Error signing up: \(error)")
+            }
         }
     }
 }
