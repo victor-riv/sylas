@@ -113,30 +113,38 @@ class Authenticator: ObservableObject {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["email"], from: nil) { result, error in
             if let error = error {
-                completion(.failure(error))
+                DispatchQueue.main.async {
+                    completion(.failure(error))
+                }
                 return
             }
             
             guard let accessToken = AccessToken.current else {
-                completion(.failure(NSError(domain: "FacebookLoginError", code: 0, userInfo: nil)))
+                DispatchQueue.main.async {
+                    completion(.failure(NSError(domain: "FacebookLoginError", code: 0, userInfo: nil)))
+                }
                 return
             }
             
             let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
             Auth.auth().signIn(with: credential) { authResult, error in
                 if let error = error {
-                    completion(.failure(error))
+                    DispatchQueue.main.async {
+                        completion(.failure(error))
+                    }
                     return
                 }
                 if let user = authResult?.user {
-                    self.currentUser = user
-                    self.isAuthenticated = true
-                    completion(.success((user)))
+                    DispatchQueue.main.async {
+                        self.currentUser = user
+                        self.isAuthenticated = true
+                        completion(.success(user))
+                    }
                 }
-                
             }
         }
     }
+
     
     func signOut() {
         do {

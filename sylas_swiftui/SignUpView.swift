@@ -113,14 +113,17 @@ struct LoginFormView: View {
     func submitLogin() {
         focusedField = nil
         
-        authenticator.signUp(email: email, password: password) { result in
-            switch result {
-            case .success(let user):
-                print("Signed up user: \(user.uid)")
-                
-                
-            case .failure(let error):
-                print("Error signing up: \(error)")
+        authenticator.signUp(email: email, password: password) {
+            result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let user):
+                    print("Signed up user: \(user.uid)")
+                    
+                    
+                case .failure(let error):
+                    print("Error signing up: \(error)")
+                }
             }
         }
     }
