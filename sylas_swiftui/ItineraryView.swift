@@ -21,17 +21,10 @@ struct ItineraryView: View {
                         stickiedContent
                             .mySticky(maxHeight: 400)
                         VStack (spacing: 2){
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
                             
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
-                            
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
-                            
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
-                            
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
-                            
-                            LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
+                            ForEach(0...50, id: \.self) { _ in
+                                LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
+                            }
                             
                             
                         }
@@ -109,7 +102,7 @@ struct ItineraryView: View {
                         .stroke(Color(red: 52/255.0, green: 51/255.0, blue: 50/255.0))
                 )
         }
-        .padding(.bottom)
+        .padding(.bottom, 20)
     }
 }
 
