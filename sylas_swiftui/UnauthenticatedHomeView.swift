@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct UnauthenticatedHomeView: View {
-    @EnvironmentObject var authenticator: Authenticator
     @State private var isLinkActive = false
     var body: some View {
         NavigationView {

@@ -53,16 +53,16 @@ struct sylas_swiftuiApp: App {
     
     var body: some Scene {
         WindowGroup {
-            if authenticator.isAuthenticated {
-                // Replace with LoggedInView
-                ItineraryView()
-                    .environmentObject(authenticator)
-                    .preferredColorScheme(.dark)
-            } else {
-                UnauthenticatedHomeView()
-                    .environmentObject(authenticator)
-                    .preferredColorScheme(.dark)
+            Group {
+                if authenticator.isAuthenticated {
+                    ItineraryView()
+                } else {
+                    UnauthenticatedHomeView()
+                }
             }
+            .environmentObject(authenticator)
+            .preferredColorScheme(.dark)
         }
     }
 }
+

@@ -59,9 +59,6 @@ struct SignUpView: View {
                 }
                 .padding()
             }
-            .alert(isPresented: $showAlert, content: {
-                Alert(title: Text("Success"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-            })
         }
         .navigationTitle("Sign Up")
         .navigationBarTitleDisplayMode(.inline)

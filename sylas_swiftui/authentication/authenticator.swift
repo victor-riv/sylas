@@ -59,47 +59,55 @@ class Authenticator: ObservableObject {
     
     func signInWithGoogle(completion: @escaping (Result<User, Error>) -> Void) {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
-        
+
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: clientID)
         GIDSignIn.sharedInstance.configuration = config
-        
+
         guard let presentingViewController = getTopViewController() else {return}
-        
+
         // Start the sign in flow!
         GIDSignIn.sharedInstance.signIn(withPresenting: presentingViewController) { [weak self] result, error in
             guard error == nil else {
-                // ...
-                print("error here")
+                DispatchQueue.main.async {
+                    print("error here")
+                    completion(.failure(error!)) // safely unwrap error or handle differently
+                }
                 return
             }
-            
+
             guard let user = result?.user,
                   let idToken = user.idToken?.tokenString
             else {
-                print("something else happened")
+                DispatchQueue.main.async {
+                    print("something else happened")
+                    completion(.failure(NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred"])))
+                }
                 return
             }
-            
+
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: user.accessToken.tokenString)
-            
-            print("onto something")
-            Auth.auth().signIn(with: credential) { result, error in
-                if let error = error {
-                    print("Google Sign In Error")
-                    completion(.failure(error))
-                }
-                
-                if let user = result?.user {
-                    self?.currentUser = user
-                    self?.isAuthenticated = true
-                    print("Authenticated in Firebase")
-                    completion(.success(user))
+
+            Auth.auth().signIn(with: credential) { authResult, error in
+                DispatchQueue.main.async {
+                    if let error = error {
+                        print("Google Sign In Error")
+                        completion(.failure(error))
+                    } else if let user = authResult?.user {
+                        self?.currentUser = user
+                        self?.isAuthenticated = true
+                        print("Authenticated in Firebase")
+                        completion(.success(user))
+                    } else {
+                        print("Unknown error occurred")
+                        completion(.failure(NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unknown error occurred"])))
+                    }
                 }
             }
         }
     }
+
     
     func signInWithFacebook(completion: @escaping (Result<User, Error>) -> Void) {
         let loginManager = LoginManager()
@@ -133,13 +141,15 @@ class Authenticator: ObservableObject {
     func signOut() {
         do {
             try Auth.auth().signOut()
-            self.isAuthenticated = false
-            self.currentUser = nil
+            DispatchQueue.main.async {
+                self.isAuthenticated = false
+                self.currentUser = nil
+            }
         } catch let signOutError as NSError {
             print("Error signing out: \(signOutError)")
-            
         }
     }
+
 }
 
 func getTopViewController() -> UIViewController? {

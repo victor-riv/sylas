@@ -57,6 +57,7 @@
 		3ECEB6F42B6B62F400A1C5F4 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEB6F32B6B62F400A1C5F4 /* Location.swift */; };
 		3ECEB6F62B6B634900A1C5F4 /* Itinerary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEB6F52B6B634900A1C5F4 /* Itinerary.swift */; };
 		3ECEB6F82B6B63C800A1C5F4 /* SylasUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */; };
+		3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F15D2B6E90220083AC0C /* RootView.swift */; };
 		3EEC50952B69AB20003D3A3E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50942B69AB20003D3A3E /* FirebaseAnalytics */; };
 		3EEC50972B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50962B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		3EEC50992B69AB20003D3A3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50982B69AB20003D3A3E /* FirebaseAnalyticsSwift */; };
@@ -104,6 +105,7 @@
 		3ECEB6F32B6B62F400A1C5F4 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		3ECEB6F52B6B634900A1C5F4 /* Itinerary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Itinerary.swift; sourceTree = "<group>"; };
 		3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SylasUser.swift; sourceTree = "<group>"; };
+		3ED5F15D2B6E90220083AC0C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "sylas-swiftui-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -223,6 +225,7 @@
 				3E26574B2B69FD7300599D76 /* CustomNavBar.swift */,
 				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
 				3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */,
+				3ED5F15D2B6E90220083AC0C /* RootView.swift */,
 			);
 			path = sylas_swiftui;
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 				3ECEB6F42B6B62F400A1C5F4 /* Location.swift in Sources */,
 				3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */,
 				3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */,
+				3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */,
 				3E26574C2B69FD7300599D76 /* CustomNavBar.swift in Sources */,
 				3E2657502B6A08D900599D76 /* DestinationCard.swift in Sources */,
 				3ECEB6F62B6B634900A1C5F4 /* Itinerary.swift in Sources */,
