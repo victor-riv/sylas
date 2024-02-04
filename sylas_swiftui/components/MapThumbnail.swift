@@ -20,8 +20,11 @@ struct MapThumbnail: View {
                     .resizable()
                     .scaledToFit()
             } else {
-                Text("Generating map snapshot...")
-                    .onAppear(perform: generateSnapshot)
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .onAppear {
+                        generateSnapshot()
+                    }
             }
         }
     }
