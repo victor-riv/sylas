@@ -18,17 +18,14 @@ struct ItineraryView: View {
                 ScrollView {
                     VStack(alignment: .leading) {
                         DestinationCardView()
-                        stickiedContent
-                            .mySticky(maxHeight: 400)
+                        ItinerariesHeader
+                            .sticky(maxHeight: 400)
                         VStack (spacing: 2){
                             
                             ForEach(0...50, id: \.self) { _ in
                                 LocationTile(locationName: "Parque de El Retiro", locationAddress: "Retiro, 28009 Madrid, Spain")
                             }
-                            
-                            
                         }
-                        
                     }
                 }
                 .coordinateSpace(name: "itineraryContainer")
@@ -56,7 +53,7 @@ struct ItineraryView: View {
         .padding(.horizontal, 5)
     }
     
-    @ViewBuilder var stickiedContent: some View {
+    @ViewBuilder var ItinerariesHeader: some View {
         HStack (alignment: .bottom){
             VStack (alignment: .leading,spacing: 12){
                 HStack (spacing: 12) {
@@ -106,7 +103,7 @@ struct ItineraryView: View {
     }
 }
 
-struct MySticky: ViewModifier {
+struct Sticky: ViewModifier {
     @State var frame: CGRect = .zero
     var maxHeight: CGFloat
     
@@ -132,14 +129,14 @@ struct MySticky: ViewModifier {
             .overlay(GeometryReader { proxy in
                 let f = proxy.frame(in: .named("itineraryContainer"))
                 Color.clear.onAppear{ frame = f}
-                    .onChange(of: f) { frame = $0 }
+                    .onChange(of: f) { frame = f }
             })
     }
 }
 
 extension View {
-    func mySticky(maxHeight: CGFloat) -> some View {
-        modifier(MySticky(maxHeight: maxHeight))
+    func sticky(maxHeight: CGFloat) -> some View {
+        modifier(Sticky(maxHeight: maxHeight))
     }
 }
 

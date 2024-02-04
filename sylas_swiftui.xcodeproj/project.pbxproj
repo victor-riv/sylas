@@ -212,20 +212,16 @@
 		3E5CA6D62B689899008AF2FA /* sylas_swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				3ED5F1612B6F0B110083AC0C /* views */,
 				3ECEB6F02B6B62C100A1C5F4 /* models */,
 				3ECEB6EB2B6B124A00A1C5F4 /* components */,
 				3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */,
 				3E269EC22B69A14A004DFF1C /* authentication */,
 				3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */,
-				3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */,
-				3E72E1F02B6955CB004136BB /* SignUpView.swift */,
 				3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */,
 				3E269EB52B699EB1004DFF1C /* GoogleService-Info.plist */,
 				3E5CA6DD2B68989A008AF2FA /* Preview Content */,
 				3E26574B2B69FD7300599D76 /* CustomNavBar.swift */,
-				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
-				3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */,
-				3ED5F15D2B6E90220083AC0C /* RootView.swift */,
 			);
 			path = sylas_swiftui;
 			sourceTree = "<group>";
@@ -254,6 +250,18 @@
 				3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		3ED5F1612B6F0B110083AC0C /* views */ = {
+			isa = PBXGroup;
+			children = (
+				3ED5F15D2B6E90220083AC0C /* RootView.swift */,
+				3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */,
+				3E72E1F02B6955CB004136BB /* SignUpView.swift */,
+				3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */,
+				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
+			);
+			path = views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
