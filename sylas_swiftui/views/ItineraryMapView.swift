@@ -15,33 +15,57 @@ struct ItineraryMapView: View {
     
     var body: some View {
         NavigationView {
-            Map {
-                Annotation("El Retiro", coordinate: CLLocationCoordinate2D(latitude: 40.411335, longitude: -3.674908)) {
-                    Image(systemName: "leaf.circle")
-                        .frame(width: 40, height: 40)
-                        
-                        .foregroundColor(.black)
-                        .background(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
-                        .clipShape(Circle())
-                }
-                
+            VStack(alignment: .leading) {
+                Map {
+                    Annotation("El Retiro", coordinate: CLLocationCoordinate2D(latitude: 40.411335, longitude: -3.674908)) {
+                        Image(systemName: "leaf.circle")
+                            .frame(width: 40, height: 40)
+                            
+                            .foregroundColor(.black)
+                            .background(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
+                            .clipShape(Circle())
+                    }
                     
-                Annotation("Meson del Boqueron", coordinate: CLLocationCoordinate2D(latitude: 40.4104833, longitude: -3.7098438)){
-                    Image(systemName: "fork.knife")
-                        .frame(width: 40, height: 40)
-                        .foregroundColor(.black)
-                        .background(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
-                        .clipShape(Circle())
+                        
+                    Annotation("Meson del Boqueron", coordinate: CLLocationCoordinate2D(latitude: 40.4104833, longitude: -3.7098438)){
+                        Image(systemName: "fork.knife")
+                            .frame(width: 40, height: 40)
+                            .foregroundColor(.black)
+                            .background(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
+                            .clipShape(Circle())
+                    }
+                    
+                    if let route {
+                        MapPolyline(route)
+                            .stroke(.yellow, lineWidth: 5)
+                    }
                 }
+                .frame(height: 400)
+                .onAppear {
+                    getRoute()
+                }
+                .padding(.bottom)
                 
-                if let route {
-                    MapPolyline(route)
-                        .stroke(.yellow, lineWidth: 5)
+                VStack(alignment: .leading) {
+                    Text("Madrid Itinerary Route")
+                        .font(.title3)
+                        .foregroundColor(.black)
+                    Text("from Feb 2-5, 2024")
+                        .font(.subheadline)
+                        .foregroundColor(.black.opacity(0.6))
                 }
+                .padding()
+                
+                .background(
+                            RightRoundedRectangle(radius: 20)
+                                .fill(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
+                        )
+                Spacer()
+                
             }
-            .onAppear {
-                getRoute()
-            }
+            .padding(.horizontal, 5)
+            
+            
         }
     }
     
@@ -58,6 +82,27 @@ struct ItineraryMapView: View {
     }
 }
 
+struct RightRoundedRectangle: Shape {
+    var radius: CGFloat
+    
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+
+        let r = min(radius, rect.height/2)
+        let rect = CGRect(x: 0, y: 0, width: rect.width, height: rect.height)
+        
+        path.move(to: CGPoint(x: rect.minX, y: rect.minY))
+        path.addLine(to: CGPoint(x: rect.maxX - r, y: rect.minY))
+        path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.minY + r), radius: r, startAngle: Angle(degrees: -90), endAngle: Angle(degrees: 0), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY - r))
+        path.addArc(center: CGPoint(x: rect.maxX - r, y: rect.maxY - r), radius: r, startAngle: Angle(degrees: 0), endAngle: Angle(degrees: 90), clockwise: false)
+        path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
+        path.closeSubpath()
+
+        return path
+    }
+}
+
 
 
 #Preview {
@@ -65,6 +110,7 @@ struct ItineraryMapView: View {
         center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     ))
+    .preferredColorScheme(.dark)
 }
 
 
