@@ -97,15 +97,10 @@ struct ItineraryView: View {
                 
             }
             Spacer()
-            NavigationLink(destination: ItineraryMapView(region: region)) {
-                ItineraryMapView(region: region)
+            NavigationLink(destination: ItineraryMapView(region: region)){
+                MapThumbnail(region: region)
                     .frame(width: 85, height: 85)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color(red: 52/255.0, green: 51/255.0, blue: 50/255.0), lineWidth: 2)
-                    )
-                
             }
         }
         .padding(.bottom, 20)

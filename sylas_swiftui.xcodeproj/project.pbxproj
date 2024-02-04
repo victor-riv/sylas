@@ -60,6 +60,7 @@
 		3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F15D2B6E90220083AC0C /* RootView.swift */; };
 		3ED5F1632B6F1A4E0083AC0C /* ItineraryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */; };
 		3ED5F1652B6F1D6B0083AC0C /* BlackAndWhiteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1642B6F1D6B0083AC0C /* BlackAndWhiteMap.swift */; };
+		3ED5F1672B7037080083AC0C /* MapThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1662B7037080083AC0C /* MapThumbnail.swift */; };
 		3EEC50952B69AB20003D3A3E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50942B69AB20003D3A3E /* FirebaseAnalytics */; };
 		3EEC50972B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50962B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		3EEC50992B69AB20003D3A3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50982B69AB20003D3A3E /* FirebaseAnalyticsSwift */; };
@@ -110,6 +111,7 @@
 		3ED5F15D2B6E90220083AC0C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryMapView.swift; sourceTree = "<group>"; };
 		3ED5F1642B6F1D6B0083AC0C /* BlackAndWhiteMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackAndWhiteMap.swift; sourceTree = "<group>"; };
+		3ED5F1662B7037080083AC0C /* MapThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapThumbnail.swift; sourceTree = "<group>"; };
 		3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "sylas-swiftui-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -242,6 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				3E26574F2B6A08D900599D76 /* DestinationCard.swift */,
+				3ED5F1662B7037080083AC0C /* MapThumbnail.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */,
 				3ED5F1652B6F1D6B0083AC0C /* BlackAndWhiteMap.swift in Sources */,
 				3ECEB6F42B6B62F400A1C5F4 /* Location.swift in Sources */,
+				3ED5F1672B7037080083AC0C /* MapThumbnail.swift in Sources */,
 				3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */,
 				3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */,
 				3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */,
