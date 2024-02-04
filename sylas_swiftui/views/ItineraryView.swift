@@ -6,17 +6,24 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ItineraryView: View {
     @State private var toggledID: Int = 1
     @State private var isSticky: Bool = false
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
+        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+    )
+    
     @EnvironmentObject var authenticator: Authenticator
     
     var body: some View {
         NavigationStack {
             VStack {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading) {
+                        CustomNavBar()
                         DestinationCardView()
                         ItinerariesHeader
                             .sticky(maxHeight: 400)
@@ -29,6 +36,7 @@ struct ItineraryView: View {
                     }
                 }
                 .coordinateSpace(name: "itineraryContainer")
+                
                 
                 Spacer()
                 Button(action: authenticator.signOut) {
@@ -89,15 +97,16 @@ struct ItineraryView: View {
                 
             }
             Spacer()
-            Image("map")
-                .resizable()
-                .scaledToFill()
-                .frame(width: 85, height: 85)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 20)
-                        .stroke(Color(red: 52/255.0, green: 51/255.0, blue: 50/255.0))
-                )
+            NavigationLink(destination: ItineraryMapView(region: region)) {
+                ItineraryMapView(region: region)
+                    .frame(width: 85, height: 85)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(red: 52/255.0, green: 51/255.0, blue: 50/255.0), lineWidth: 2)
+                    )
+                
+            }
         }
         .padding(.bottom, 20)
     }
