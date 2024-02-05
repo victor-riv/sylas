@@ -11,10 +11,8 @@ import MapKit
 struct ItineraryView: View {
     @State private var toggledID: Int = 1
     @State private var isSticky: Bool = false
-    @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    )
+    @State private var region: Region?
+    let geoname: String
     
     @EnvironmentObject var authenticator: Authenticator
     
@@ -59,6 +57,11 @@ struct ItineraryView: View {
             Spacer()
         }
         .padding(.horizontal, 5)
+        .onAppear {
+            OpenTripMapAPIService().getRegionCoordinates(geoname: geoname) { fetchedRegion in
+                region = fetchedRegion
+            }
+        }
     }
     
     @ViewBuilder var ItinerariesHeader: some View {
@@ -97,8 +100,8 @@ struct ItineraryView: View {
                 
             }
             Spacer()
-            NavigationLink(destination: ItineraryMapView(region: region)){
-                MapThumbnail(region: region)
+            NavigationLink(destination: ItineraryMapView(region: $region)){
+                MapThumbnail(region: $region)
                     .frame(width: 85, height: 85)
                     .clipShape(RoundedRectangle(cornerRadius: 20))
             }
@@ -186,7 +189,7 @@ struct LocationTile: View {
 
 
 #Preview {
-    ItineraryView()
+    ItineraryView(geoname: "Madrid")
         .preferredColorScheme(.dark)
         .environmentObject(Authenticator.shared)
 }

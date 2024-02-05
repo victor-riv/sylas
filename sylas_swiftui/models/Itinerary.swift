@@ -11,5 +11,5 @@ struct Itinerary {
     let city: String
     let country: String
     let cityImgUrl: String
-    let locations: [Location]
+//    let locations: [Location]
 }

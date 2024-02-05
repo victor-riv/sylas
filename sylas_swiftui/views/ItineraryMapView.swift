@@ -9,13 +9,14 @@ import SwiftUI
 import MapKit
 
 struct ItineraryMapView: View {
-    var region: MKCoordinateRegion
+    @Binding var region: Region?
     
     @State private var route: MKRoute?
     
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
+                CustomNavBar()
                 Map {
                     Annotation("El Retiro", coordinate: CLLocationCoordinate2D(latitude: 40.411335, longitude: -3.674908)) {
                         Image(systemName: "leaf.circle")
@@ -41,6 +42,7 @@ struct ItineraryMapView: View {
                     }
                 }
                 .frame(height: 400)
+                .clipShape(RoundedRectangle(cornerRadius: 20))
                 .onAppear {
                     getRoute()
                 }
@@ -54,7 +56,7 @@ struct ItineraryMapView: View {
                         .font(.subheadline)
                         .foregroundColor(.black.opacity(0.6))
                 }
-                .padding()
+                .padding(10)
                 
                 .background(
                             RightRoundedRectangle(radius: 20)
@@ -105,12 +107,12 @@ struct RightRoundedRectangle: Shape {
 
 
 
-#Preview {
-    ItineraryMapView(region: MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
-        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-    ))
-    .preferredColorScheme(.dark)
-}
+//#Preview {
+//    ItineraryMapView(region: MKCoordinateRegion(
+//        center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
+//        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+//    ))
+//    .preferredColorScheme(.dark)
+//}
 
 

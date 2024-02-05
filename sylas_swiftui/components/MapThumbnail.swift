@@ -9,7 +9,7 @@ import SwiftUI
 import MapKit
 
 struct MapThumbnail: View {
-    let region: MKCoordinateRegion
+    @Binding var region: Region?
     
     @State private var mapImage: UIImage?
     
@@ -22,37 +22,52 @@ struct MapThumbnail: View {
             } else {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
-                    .onAppear {
-                        generateSnapshot()
-                    }
+//                    .onAppear {
+//                        generateSnapshot()
+//                    }
             }
+        }
+        .onChange(of: region) {
+            generateSnapshot()
         }
     }
     
     func generateSnapshot() {
+        guard let region = region else {
+            print("Region is nil")
+            return
+        }
+        
         let options = MKMapSnapshotter.Options()
-        options.region = region
+        options.region = MKCoordinateRegion(
+            center: CLLocationCoordinate2D(latitude: region.lat, longitude: region.lon),
+            span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        )
         options.size = CGSize(width: 85, height: 85)
         options.scale = UIScreen.main.scale
         
         let snapshotter = MKMapSnapshotter(options: options)
         snapshotter.start { snapshot, error in
-            guard let snapshot = snapshot, error == nil else {
-                print(error?.localizedDescription ?? "Error generating snapshot")
+            if let error = error {
+                print("Snapshot error: \(error.localizedDescription)")
+                // Handle error - e.g., set a default image or update UI to show the error
+                DispatchQueue.main.async {
+                    self.mapImage = UIImage(named: "defaultImage") // Assuming you have a default image
+                }
                 return
             }
             
-            DispatchQueue.main.async {
-                self.mapImage = snapshot.image
+            if let snapshot = snapshot {
+                DispatchQueue.main.async {
+                    self.mapImage = snapshot.image
+                }
             }
         }
     }
+
 }
 
 #Preview {
-    MapThumbnail(region: MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 40.4168, longitude: -3.7038),
-        span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-    ))
+    MapThumbnail(region: .constant(Region(name: "Madrid", country: "ES", lat: 40.416775, lon: -3.703790, population: 3165000, timezone: "Europe/Madrid", status: "OK")))
     .preferredColorScheme(.dark)
 }

@@ -12,7 +12,7 @@ struct RootView: View {
     var body: some View {
         Group {
             if authenticator.isAuthenticated {
-                ItineraryView()
+                ItineraryView(geoname: "Madrid")
             } else {
                 UnauthenticatedHomeView()
             }
