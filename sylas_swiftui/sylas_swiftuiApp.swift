@@ -49,6 +49,7 @@ struct sylas_swiftuiApp: App {
     // register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var authenticator = Authenticator.shared
+    @StateObject var itineraryOnboardingData = ItineraryOnboardingData()
     
     
     var body: some Scene {
@@ -57,6 +58,7 @@ struct sylas_swiftuiApp: App {
                 if authenticator.isAuthenticated {
 //                    ItineraryView(geoname: "Madrid")
                     CreateItineraryView()
+                        .environmentObject(itineraryOnboardingData)
                 } else {
                     UnauthenticatedHomeView()
                 }

@@ -35,8 +35,8 @@ struct CreateItineraryView: View {
                         }
                         .padding(.bottom, 20)
                         
-                        
-                        Button(action: {}) {
+                        NavigationLink(destination: GeonameView()) {
+                            
                             HStack {
                                 Text("Get Started")
                                 Spacer()
@@ -51,9 +51,11 @@ struct CreateItineraryView: View {
                                 RoundedRectangle(cornerRadius: 12)
                                     .stroke(Color.white, lineWidth: 1)
                             )
+                            
+                            //                        .padding(.horizontal)
+                            .padding(.bottom)
                         }
-                        //                        .padding(.horizontal)
-                        .padding(.bottom)
+                        
                     }
                     .padding()
                     .offset(y: geometry.size.height * 0.72)
@@ -63,13 +65,49 @@ struct CreateItineraryView: View {
     }
 }
 
-#Preview {
-    CreateItineraryView()
-        .preferredColorScheme(.dark)
+struct GeonameView: View {
+    @EnvironmentObject var itineraryOnboardingData: ItineraryOnboardingData
+    
+    var body: some View {
+        VStack {
+            Text("Where would you like to go?")
+                .font(.headline)
+                .padding(.bottom, 20)
+            TextField("Enter a place", text: $itineraryOnboardingData.geoname)
+                .padding() // Adds padding inside the text field for the text
+                .background(Color(red: 0.2, green: 0.2, blue: 0.2)) // Sets the background color of the text field
+                .cornerRadius(12) // Rounds the corners of the text field
+                .foregroundColor(.white) // Sets the text color to white
+            // Adds some horizontal padding around the text field
+            
+            NavigationLink(destination: Text("Third Page")) {
+                HStack {
+                    Spacer()
+                    HStack {
+                        Text("Next")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                    }
+                    .frame(width: 70)
+                    .padding()
+                    .foregroundColor(Color.white)
+                    .background(Color.black)
+                    .cornerRadius(12)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(Color.white, lineWidth: 1)
+                    )
+                }
+            }
+            .padding(.top, 20)
+        }
+        .padding()
+    }
 }
 
 
 #Preview {
     CreateItineraryView()
         .preferredColorScheme(.dark)
+        .environmentObject(ItineraryOnboardingData())
 }
