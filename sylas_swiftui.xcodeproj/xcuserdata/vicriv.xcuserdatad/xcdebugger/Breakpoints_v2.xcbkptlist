@@ -3,4 +3,54 @@
    uuid = "38F7BDB1-D31F-47DC-8425-0186BBF44577"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0B17A6B2-4168-4F47-A7B4-DE568C4AB97B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "sylas_swiftui/apis/OpenTripMapAPI.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "getRegionCoordinates(geoname:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0B17A6B2-4168-4F47-A7B4-DE568C4AB97B - 9963df7f705318d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in sylas_swiftui.OpenTripMapAPIService.getRegionCoordinates(geoname: Swift.String, completion: (sylas_swiftui.Region) -&gt; ()) -&gt; ()"
+                  moduleName = "sylas_swiftui"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vicriv/Development/sylas_swiftui/sylas_swiftui/apis/OpenTripMapAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1404">
+               </Location>
+               <Location
+                  uuid = "0B17A6B2-4168-4F47-A7B4-DE568C4AB97B - 9963df7f705318d2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in sylas_swiftui.OpenTripMapAPIService.getRegionCoordinates(geoname: Swift.String, completion: (sylas_swiftui.Region) -&gt; ()) -&gt; ()"
+                  moduleName = "sylas_swiftui"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/vicriv/Development/sylas_swiftui/sylas_swiftui/apis/OpenTripMapAPI.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "1320">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
