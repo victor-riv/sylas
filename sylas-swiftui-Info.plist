@@ -22,5 +22,7 @@
 	<string>Sylas Ai</string>
 	<key>NSAppTransportSecurity</key>
 	<dict/>
+	<key>OPEN_TRIP_MAP_API_KEY</key>
+	<string>5ae2e3f221c38a28845f05b63296bfe6366adbfddbf5b215d91981c2</string>
 </dict>
 </plist>
