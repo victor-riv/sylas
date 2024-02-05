@@ -23,4 +23,4 @@ DerivedData/
 # CocoaPods
 Pods/
 
-/Users/vicriv/Development/sylas_swiftui/DebugConfiguration.xcconfig
+*.xcconfig
