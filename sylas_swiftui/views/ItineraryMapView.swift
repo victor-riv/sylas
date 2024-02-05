@@ -107,12 +107,9 @@ struct RightRoundedRectangle: Shape {
 
 
 
-//#Preview {
-//    ItineraryMapView(region: MKCoordinateRegion(
-//        center: CLLocationCoordinate2D(latitude: 40.416775, longitude: -3.703790),
-//        span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
-//    ))
-//    .preferredColorScheme(.dark)
-//}
+#Preview {
+    ItineraryMapView(region: .constant(Region(name: "Madrid", country: "ES", lat: 40.416775, lon: -3.703790, population: 3165000, timezone: "Europe/Madrid", status: "OK")))
+    .preferredColorScheme(.dark)
+}
 
 

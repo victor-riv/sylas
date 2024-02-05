@@ -59,9 +59,10 @@
 		3ECEB6F82B6B63C800A1C5F4 /* SylasUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */; };
 		3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F15D2B6E90220083AC0C /* RootView.swift */; };
 		3ED5F1632B6F1A4E0083AC0C /* ItineraryMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */; };
-		3ED5F1652B6F1D6B0083AC0C /* BlackAndWhiteMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1642B6F1D6B0083AC0C /* BlackAndWhiteMap.swift */; };
 		3ED5F1672B7037080083AC0C /* MapThumbnail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1662B7037080083AC0C /* MapThumbnail.swift */; };
 		3ED5F16A2B704C1C0083AC0C /* OpenTripMapAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1692B704C1C0083AC0C /* OpenTripMapAPI.swift */; };
+		3ED5F16D2B709CB00083AC0C /* CreateItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */; };
+		3ED5F16F2B70A8220083AC0C /* ItineraryOnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */; };
 		3EEC50952B69AB20003D3A3E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50942B69AB20003D3A3E /* FirebaseAnalytics */; };
 		3EEC50972B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50962B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		3EEC50992B69AB20003D3A3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50982B69AB20003D3A3E /* FirebaseAnalyticsSwift */; };
@@ -111,9 +112,11 @@
 		3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SylasUser.swift; sourceTree = "<group>"; };
 		3ED5F15D2B6E90220083AC0C /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryMapView.swift; sourceTree = "<group>"; };
-		3ED5F1642B6F1D6B0083AC0C /* BlackAndWhiteMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackAndWhiteMap.swift; sourceTree = "<group>"; };
 		3ED5F1662B7037080083AC0C /* MapThumbnail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapThumbnail.swift; sourceTree = "<group>"; };
 		3ED5F1692B704C1C0083AC0C /* OpenTripMapAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTripMapAPI.swift; sourceTree = "<group>"; };
+		3ED5F16B2B7089CE0083AC0C /* DebugConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfiguration.xcconfig; sourceTree = "<group>"; };
+		3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryView.swift; sourceTree = "<group>"; };
+		3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryOnboardingData.swift; sourceTree = "<group>"; };
 		3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "sylas-swiftui-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -204,6 +207,7 @@
 		3E5CA6CB2B689899008AF2FA = {
 			isa = PBXGroup;
 			children = (
+				3ED5F16B2B7089CE0083AC0C /* DebugConfiguration.xcconfig */,
 				3E5CA6D62B689899008AF2FA /* sylas_swiftui */,
 				3E5CA6D52B689899008AF2FA /* Products */,
 			);
@@ -258,6 +262,7 @@
 				3ECEB6F32B6B62F400A1C5F4 /* Region.swift */,
 				3ECEB6F52B6B634900A1C5F4 /* Itinerary.swift */,
 				3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */,
+				3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -271,7 +276,7 @@
 				3ECEB6EC2B6B12A500A1C5F4 /* ItineraryView.swift */,
 				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
 				3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */,
-				3ED5F1642B6F1D6B0083AC0C /* BlackAndWhiteMap.swift */,
+				3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -428,12 +433,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3ECEB6F82B6B63C800A1C5F4 /* SylasUser.swift in Sources */,
+				3ED5F16D2B709CB00083AC0C /* CreateItineraryView.swift in Sources */,
 				3ED5F1632B6F1A4E0083AC0C /* ItineraryMapView.swift in Sources */,
+				3ED5F16F2B70A8220083AC0C /* ItineraryOnboardingData.swift in Sources */,
 				3ECEB6ED2B6B12A500A1C5F4 /* ItineraryView.swift in Sources */,
 				3E5CA6DA2B689899008AF2FA /* UnauthenticatedHomeView.swift in Sources */,
 				3E269EC42B69A15D004DFF1C /* authenticator.swift in Sources */,
 				3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */,
-				3ED5F1652B6F1D6B0083AC0C /* BlackAndWhiteMap.swift in Sources */,
 				3ECEB6F42B6B62F400A1C5F4 /* Region.swift in Sources */,
 				3ED5F16A2B704C1C0083AC0C /* OpenTripMapAPI.swift in Sources */,
 				3ED5F1672B7037080083AC0C /* MapThumbnail.swift in Sources */,
@@ -451,6 +457,7 @@
 /* Begin XCBuildConfiguration section */
 		3E5CA6E02B68989A008AF2FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED5F16B2B7089CE0083AC0C /* DebugConfiguration.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -572,6 +579,7 @@
 		};
 		3E5CA6E32B68989A008AF2FA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED5F16B2B7089CE0083AC0C /* DebugConfiguration.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -582,12 +590,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "sylas-swiftui-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -595,6 +603,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bistro.sylas-swiftui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -613,12 +624,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "sylas-swiftui-Info.plist";
-				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -626,6 +637,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bistro.sylas-swiftui";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
