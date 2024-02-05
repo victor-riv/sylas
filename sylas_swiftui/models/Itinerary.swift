@@ -8,7 +8,7 @@
 import Foundation
 
 struct Itinerary {
-    let city: String
+    let geoname: String
     let country: String
     let cityImgUrl: String
 //    let locations: [Location]

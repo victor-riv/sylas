@@ -1,7 +1,6 @@
 import SwiftUI
 
 struct UnauthenticatedHomeView: View {
-    @State private var isLinkActive = false
     var body: some View {
         NavigationView {
             GeometryReader { geometry in
