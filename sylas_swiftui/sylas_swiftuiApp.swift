@@ -9,6 +9,7 @@ import SwiftUI
 import FirebaseCore
 import GoogleSignIn
 import FacebookCore
+import GooglePlaces
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -17,6 +18,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
         FirebaseApp.configure()
+        
+        // Configure Google Places
+        if let path = Bundle.main.path(forResource: "Info", ofType: "plist"),
+           let nsDictionary = NSDictionary(contentsOfFile: path),
+           let apiKey = nsDictionary["GooglePlacesAPIKey"] as? String {
+            GMSPlacesClient.provideAPIKey(apiKey)
+        }
         
         // Initiate Facebook SDK
         ApplicationDelegate.shared.application(
@@ -56,7 +64,7 @@ struct sylas_swiftuiApp: App {
         WindowGroup {
             Group {
                 if authenticator.isAuthenticated {
-//                    ItineraryView(geoname: "Madrid")
+                    //                    ItineraryView(geoname: "Madrid")
                     CreateItineraryView()
                         .environmentObject(itineraryOnboardingData)
                 } else {

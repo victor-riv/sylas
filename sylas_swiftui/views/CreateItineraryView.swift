@@ -65,21 +65,34 @@ struct CreateItineraryView: View {
     }
 }
 
+
 struct GeonameView: View {
     @EnvironmentObject var itineraryOnboardingData: ItineraryOnboardingData
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading){
             Text("Where would you like to go?")
                 .font(.headline)
                 .padding(.bottom, 20)
-            TextField("Enter a place", text: $itineraryOnboardingData.geoname)
-                .padding() // Adds padding inside the text field for the text
-                .background(Color(red: 0.2, green: 0.2, blue: 0.2)) // Sets the background color of the text field
-                .cornerRadius(12) // Rounds the corners of the text field
-                .foregroundColor(.white) // Sets the text color to white
-            // Adds some horizontal padding around the text field
-            
+            TextField("Enter a destination...", text: $itineraryOnboardingData.geoname)
+                .padding()
+                .background(Color(red: 0.2, green: 0.2, blue: 0.2))
+                .cornerRadius(12)
+                .foregroundColor(.white)
+                .onChange(of: itineraryOnboardingData.geoname) { oldValue, newValue in
+                    MyPlacesAPI().fetchCitySuggestions(query: newValue) { predictions in
+                        itineraryOnboardingData.cityPredictions = predictions
+                    }
+                }
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    ForEach(itineraryOnboardingData.cityPredictions, id: \.primaryText) { prediction in
+                        PredictedCityTile(cityName: prediction.primaryText, secondaryText: prediction.secondaryText)
+                    }
+                }
+            }
+            .padding(.top, 30)
+            Spacer()
             NavigationLink(destination: Text("Third Page")) {
                 HStack {
                     Spacer()
@@ -102,8 +115,17 @@ struct GeonameView: View {
             .padding(.top, 20)
         }
         .padding()
+        .onAppear{
+//            itineraryOnboardingData.cityPredictions = [PredictedCity(primaryText: "Kyoto", secondaryText: "Japan")]
+            // This should run as user types
+            //            MyPlacesAPI().fetchCitySuggestions(query: "Par"){ predictions in
+            //                print("Got someeeee")
+            //                itineraryOnboardingData.cityPredictions = predictions
+        }
     }
 }
+
+
 
 
 #Preview {

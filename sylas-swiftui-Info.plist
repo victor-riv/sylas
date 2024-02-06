@@ -20,7 +20,7 @@
 	<string>c8df3b20f8e2cde53c9f8ea33bfddc9f</string>
 	<key>FacebookDisplayName</key>
 	<string>Sylas Ai</string>
-	<key>GOOGLE_PLACES_API_KEY</key>
+	<key>GooglePlacesAPIKey</key>
 	<string>${GOOGLE_PLACES_API_KEY}</string>
 	<key>NSAppTransportSecurity</key>
 	<dict/>

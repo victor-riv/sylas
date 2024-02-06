@@ -22,6 +22,7 @@ struct MapThumbnail: View {
             } else {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
+                // Really only needed to make the preview work.
 //                    .onAppear {
 //                        generateSnapshot()
 //                    }
@@ -52,7 +53,7 @@ struct MapThumbnail: View {
                 print("Snapshot error: \(error.localizedDescription)")
                 // Handle error - e.g., set a default image or update UI to show the error
                 DispatchQueue.main.async {
-                    self.mapImage = UIImage(named: "defaultImage") // Assuming you have a default image
+                    self.mapImage = UIImage(named: "defaultImage")
                 }
                 return
             }
