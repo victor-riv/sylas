@@ -91,7 +91,11 @@ struct GeonameView: View {
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(itineraryOnboardingData.cityPredictions, id: \.id) { prediction in
-                    PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).")
+                    HStack {
+                        PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).")
+                        Spacer()
+                    }
+                    .padding(.leading, 5)
                 }
             }
         }
