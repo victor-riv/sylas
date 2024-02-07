@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import Combine
 
 
 struct CreateItineraryView: View {
@@ -68,6 +68,7 @@ struct CreateItineraryView: View {
 
 struct GeonameView: View {
     @EnvironmentObject var itineraryOnboardingData: ItineraryOnboardingData
+    private let debouncer = Debouncer(delay: 0.5)
     
     var body: some View {
         VStack(alignment: .leading){
@@ -80,50 +81,80 @@ struct GeonameView: View {
                 .cornerRadius(12)
                 .foregroundColor(.white)
                 .onChange(of: itineraryOnboardingData.geoname) { oldValue, newValue in
-                    MyPlacesAPI().fetchCitySuggestions(query: newValue) { predictions in
-                        itineraryOnboardingData.cityPredictions = predictions
+                    debouncer.debounce {
+                        Task {
+                            await fetchCities(query: newValue)
+                        }
                     }
                 }
-            ScrollView {
-                VStack(alignment: .leading, spacing: 20) {
-                    ForEach(itineraryOnboardingData.cityPredictions, id: \.primaryText) { prediction in
-                        PredictedCityTile(cityName: prediction.primaryText, secondaryText: prediction.secondaryText)
-                    }
-                }
-            }
-            .padding(.top, 30)
-            Spacer()
-            NavigationLink(destination: Text("Third Page")) {
-                HStack {
-                    Spacer()
-                    HStack {
-                        Text("Next")
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                    .frame(width: 70)
-                    .padding()
-                    .foregroundColor(Color.white)
-                    .background(Color.black)
-                    .cornerRadius(12)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .stroke(Color.white, lineWidth: 1)
-                    )
-                }
-            }
-            .padding(.top, 20)
         }
-        .padding()
-        .onAppear{
-//            itineraryOnboardingData.cityPredictions = [PredictedCity(primaryText: "Kyoto", secondaryText: "Japan")]
-            // This should run as user types
-            //            MyPlacesAPI().fetchCitySuggestions(query: "Par"){ predictions in
-            //                print("Got someeeee")
-            //                itineraryOnboardingData.cityPredictions = predictions
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 20) {
+                ForEach(itineraryOnboardingData.cityPredictions, id: \.id) { prediction in
+                    PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).")
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 30)
+        Spacer()
+        NavigationLink(destination: Text("Third Page")) {
+            HStack {
+                Spacer()
+                HStack {
+                    Text("Next")
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                }
+                .frame(width: 70)
+                .padding()
+                .foregroundColor(Color.white)
+                .background(Color.black)
+                .cornerRadius(12)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 12)
+                        .stroke(Color.white, lineWidth: 1)
+                )
+            }
+        }
+        .padding(.top, 20)
+    }
+    
+    @Sendable func fetchCities(query: String) async {
+        guard !query.isEmpty else {
+            itineraryOnboardingData.cityPredictions = []
+            return
+        }
+        
+        do {
+            let fetchedCities = try await GeoDBCitiesAPI().fetchCities(matching: query)
+            
+            itineraryOnboardingData.cityPredictions = fetchedCities
+        } catch {
+            print("Failed to fetch cities: \(error.localizedDescription)")
+            
         }
     }
 }
+
+class Debouncer {
+    private var cancellable: AnyCancellable?
+    private let delay: TimeInterval
+    
+    init(delay: TimeInterval) {
+        self.delay = delay
+    }
+    
+    func debounce(action: @escaping () -> Void) {
+        cancellable?.cancel()
+        cancellable = Just(())
+            .delay(for: .seconds(delay), scheduler: RunLoop.main)
+            .sink(receiveValue: { _ in
+                action()
+            })
+    }
+}
+
 
 
 

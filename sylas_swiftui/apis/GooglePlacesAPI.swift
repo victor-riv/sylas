@@ -13,9 +13,9 @@ class MyPlacesAPI {
         let token = GMSAutocompleteSessionToken.init()
         
         let filter = GMSAutocompleteFilter()
-        filter.types = [""]
+        filter.types = ["locality"]
         
-        GMSPlacesClient.shared().findAutocompletePredictions(fromQuery: query, filter: filter, sessionToken: token) { (results, error) in
+        GMSPlacesClient.shared().findAutocompletePredictions(fromQuery: query, filter: nil, sessionToken: token) { (results, error) in
             guard let results = results, error == nil else {
                 print("Autocomplete error: \(error!.localizedDescription)")
                 return

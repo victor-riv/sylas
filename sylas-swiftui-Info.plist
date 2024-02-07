@@ -23,7 +23,22 @@
 	<key>GooglePlacesAPIKey</key>
 	<string>${GOOGLE_PLACES_API_KEY}</string>
 	<key>NSAppTransportSecurity</key>
-	<dict/>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<false/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>geodb-free-service.wirefreethought.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+				<key>NSTemporaryExceptionMinimumTLSVersion</key>
+				<string>TLSv1.1</string>
+			</dict>
+		</dict>
+	</dict>
 	<key>OPEN_TRIP_MAP_API_KEY</key>
 	<string>${OPEN_TRIP_MAP_API_KEY}</string>
 </dict>
