@@ -44,4 +44,30 @@ struct City: Codable, Identifiable {
     let latitude: Double
     let longitude: Double
     let population: Int
+    
+    init(
+        id: Int = 0,
+        wikiDataId: String = "",
+        type: String = "",
+        name: String = "",
+        country: String = "",
+        countryCode: String = "",
+        region: String = "",
+        regionCode: String = "",
+        latitude: Double = 0.0,
+        longitude: Double = 0.0,
+        population: Int = 0
+    ) {
+        self.id = id
+        self.wikiDataId = wikiDataId
+        self.type = type
+        self.name = name
+        self.country = country
+        self.countryCode = countryCode
+        self.region = region
+        self.regionCode = regionCode
+        self.latitude = latitude
+        self.longitude = longitude
+        self.population = population
+    }
 }

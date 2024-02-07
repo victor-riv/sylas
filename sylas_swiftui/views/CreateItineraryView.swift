@@ -68,6 +68,7 @@ struct CreateItineraryView: View {
 
 struct GeonameView: View {
     @EnvironmentObject var itineraryOnboardingData: ItineraryOnboardingData
+    @State private var isNavigationLinkActive = false
     private let debouncer = Debouncer(delay: 0.5)
     
     var body: some View {
@@ -92,7 +93,11 @@ struct GeonameView: View {
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(itineraryOnboardingData.cityPredictions, id: \.id) { prediction in
                     HStack {
-                        PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).")
+                        PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).").onTapGesture {
+                            itineraryOnboardingData.selectedDestination = prediction
+                            // Navigate to the next step
+                            isNavigationLinkActive = true
+                        }
                         Spacer()
                     }
                     .padding(.leading, 5)
@@ -120,8 +125,14 @@ struct GeonameView: View {
                         .stroke(Color.white, lineWidth: 1)
                 )
             }
+            // Use a hidden NavigationLink for programmatic navigation
+            NavigationLink(destination: InterestsView(), isActive: $isNavigationLinkActive) {
+                EmptyView()
+            }
         }
         .padding(.top, 20)
+        
+        
     }
     
     @Sendable func fetchCities(query: String) async {
@@ -137,6 +148,29 @@ struct GeonameView: View {
         } catch {
             print("Failed to fetch cities: \(error.localizedDescription)")
             
+        }
+    }
+}
+
+struct InterestsView: View {
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading){
+                    Text("How do you want to spend your time?")
+                        .font(.title)
+                    Text("Choose as many as you'd like.")
+                        .font(.caption)
+                        .padding(.top, 5)
+                }
+                
+                VStack{
+                    InterestButtonView(interestName: "Great Food")
+                    InterestButtonView(interestName: "Wine & Beer")
+                    
+                }
+                .padding(.top, 20)
+            }
         }
     }
 }
@@ -159,12 +193,34 @@ class Debouncer {
     }
 }
 
-
-
+struct InterestButtonView: View {
+    @State var isSelected = false
+    var interestName: String
+    var body: some View {
+        Button(interestName) {
+            isSelected = !isSelected
+            print("\(interestName)")
+            // Add code to update the selected interests in Onboarding Data
+        }
+        .padding()
+        .foregroundColor(Color.white)
+        .background(Color.black)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(isSelected ? Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255) : Color.gray, lineWidth: 2) //
+        )
+    }
+    
+}
 
 
 #Preview {
-    CreateItineraryView()
+    //    CreateItineraryView()
+    //        .preferredColorScheme(.dark)
+    //        .environmentObject(ItineraryOnboardingData())
+    InterestsView()
         .preferredColorScheme(.dark)
-        .environmentObject(ItineraryOnboardingData())
 }
+
+

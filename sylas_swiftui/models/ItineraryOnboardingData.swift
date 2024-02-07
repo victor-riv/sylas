@@ -10,6 +10,7 @@ import Foundation
 class ItineraryOnboardingData: ObservableObject {
     @Published var geoname: String = ""
     @Published var cityPredictions: [City] = []
+    @Published var selectedDestination: City = City()
 }
 
 struct PredictedCity {
