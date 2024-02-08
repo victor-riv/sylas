@@ -89,7 +89,16 @@ struct GeonameView: View {
                     }
                 }
         }
+        .padding()
         ScrollView(showsIndicators: false) {
+//            FlowLayout(mode: .scrollable,
+//                       binding: .constant(5),
+//                       items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]) {
+//                
+//                InterestButtonView(interestName: $0)
+//                    .padding(.vertical, 10)
+//                    .padding(.horizontal, 2)
+//            }
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(itineraryOnboardingData.cityPredictions, id: \.id) { prediction in
                     HStack {
@@ -106,7 +115,12 @@ struct GeonameView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(.top, 30)
+        .padding()
         Spacer()
+        // Use a hidden NavigationLink for programmatic navigation
+        NavigationLink(destination: InterestsView(), isActive: $isNavigationLinkActive) {
+            EmptyView()
+        }
         NavigationLink(destination: Text("Third Page")) {
             HStack {
                 Spacer()
@@ -125,13 +139,9 @@ struct GeonameView: View {
                         .stroke(Color.white, lineWidth: 1)
                 )
             }
-            // Use a hidden NavigationLink for programmatic navigation
-            NavigationLink(destination: InterestsView(), isActive: $isNavigationLinkActive) {
-                EmptyView()
-            }
         }
         .padding(.top, 20)
-        
+        .padding()
         
     }
     
@@ -148,29 +158,6 @@ struct GeonameView: View {
         } catch {
             print("Failed to fetch cities: \(error.localizedDescription)")
             
-        }
-    }
-}
-
-struct InterestsView: View {
-    var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(alignment: .leading){
-                    Text("How do you want to spend your time?")
-                        .font(.title)
-                    Text("Choose as many as you'd like.")
-                        .font(.caption)
-                        .padding(.top, 5)
-                }
-                
-                VStack{
-                    InterestButtonView(interestName: "Great Food")
-                    InterestButtonView(interestName: "Wine & Beer")
-                    
-                }
-                .padding(.top, 20)
-            }
         }
     }
 }
@@ -193,6 +180,33 @@ class Debouncer {
     }
 }
 
+struct InterestsView: View {
+    let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
+    
+    var body: some View {
+       
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading){
+                Text("How do you want to spend your time?")
+                    .font(.headline)
+                Text("Choose as many as you'd like.")
+                    .font(.caption)
+            }
+            FlowLayout(mode: .scrollable,
+                       binding: .constant(5),
+                       items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]) {
+                
+                InterestButtonView(interestName: $0)
+                    .padding(.vertical, 10)
+                    .padding(.horizontal, 2)
+            }
+        }
+        .frame(maxWidth: .infinity)
+//        .padding(.top, 30)
+        .padding()
+    }
+}
+
 struct InterestButtonView: View {
     @State var isSelected = false
     var interestName: String
@@ -208,7 +222,7 @@ struct InterestButtonView: View {
         .clipShape(RoundedRectangle(cornerRadius: 12))
         .overlay(
             RoundedRectangle(cornerRadius: 12)
-                .stroke(isSelected ? Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255) : Color.gray, lineWidth: 2) //
+                .stroke(isSelected ? Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255) : .gray.opacity(0.7), lineWidth: 2) //
         )
     }
     
