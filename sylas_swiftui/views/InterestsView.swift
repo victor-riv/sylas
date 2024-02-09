@@ -14,7 +14,7 @@ struct InterestsView: View {
         
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading){
-                Text("How do you want to spend your time?")
+                Text("How do you want to spend your time in \(viewModel.selectedCity.name)?")
                     .font(.headline)
                     .padding(.bottom, 10)
                 Text("Choose as many as you'd like.")
