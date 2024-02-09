@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct CustomNavBar: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         HStack{
             HStack (spacing: 20) {
-                Image(systemName: "arrow.left")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 20, height: 20)
-
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "arrow.left")
+                        .foregroundColor(.white)
+                }
+                
             }
             Spacer()
             HambugerIcon()
         }
-//        .edgesIgnoringSafeArea(.top)
+        //        .edgesIgnoringSafeArea(.top)
     }
 }
 
