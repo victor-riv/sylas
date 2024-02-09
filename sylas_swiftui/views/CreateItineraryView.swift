@@ -89,16 +89,11 @@ struct GeonameView: View {
                     }
                 }
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
+        
         ScrollView(showsIndicators: false) {
-//            FlowLayout(mode: .scrollable,
-//                       binding: .constant(5),
-//                       items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]) {
-//                
-//                InterestButtonView(interestName: $0)
-//                    .padding(.vertical, 10)
-//                    .padding(.horizontal, 2)
-//            }
+            
             VStack(alignment: .leading, spacing: 20) {
                 ForEach(itineraryOnboardingData.cityPredictions, id: \.id) { prediction in
                     HStack {
@@ -184,26 +179,30 @@ struct InterestsView: View {
     let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
     
     var body: some View {
-       
+        
         ScrollView(showsIndicators: false) {
             VStack(alignment: .leading){
-                Text("How do you want to spend your time?")
+                Text("Where would you like to go?")
                     .font(.headline)
+                    .padding(.bottom, 10)
                 Text("Choose as many as you'd like.")
                     .font(.caption)
-            }
-            FlowLayout(mode: .scrollable,
-                       binding: .constant(5),
-                       items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]) {
+                    .padding(.bottom, 10)
                 
-                InterestButtonView(interestName: $0)
-                    .padding(.vertical, 10)
-                    .padding(.horizontal, 2)
+                FlowLayout(mode: .scrollable,
+                           binding: .constant(5),
+                           items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photogrpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]) {
+                    
+                    InterestButtonView(interestName: $0)
+                        .padding(.vertical, 5)
+                        .padding(.horizontal, 2)
+                }
             }
+            .padding(.horizontal)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            
+            
         }
-        .frame(maxWidth: .infinity)
-//        .padding(.top, 30)
-        .padding()
     }
 }
 
@@ -216,7 +215,7 @@ struct InterestButtonView: View {
             print("\(interestName)")
             // Add code to update the selected interests in Onboarding Data
         }
-        .padding()
+        .padding(10)
         .foregroundColor(Color.white)
         .background(Color.black)
         .clipShape(RoundedRectangle(cornerRadius: 12))
@@ -230,11 +229,11 @@ struct InterestButtonView: View {
 
 
 #Preview {
-    //    CreateItineraryView()
-    //        .preferredColorScheme(.dark)
-    //        .environmentObject(ItineraryOnboardingData())
-    InterestsView()
+    CreateItineraryView()
         .preferredColorScheme(.dark)
+        .environmentObject(ItineraryOnboardingData())
+    //    InterestsView()
+    //        .preferredColorScheme(.dark)
 }
 
 
