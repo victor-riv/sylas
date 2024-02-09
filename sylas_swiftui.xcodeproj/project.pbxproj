@@ -68,6 +68,10 @@
 		3ED5F16A2B704C1C0083AC0C /* OpenTripMapAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F1692B704C1C0083AC0C /* OpenTripMapAPI.swift */; };
 		3ED5F16D2B709CB00083AC0C /* CreateItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */; };
 		3ED5F16F2B70A8220083AC0C /* ItineraryOnboardingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */; };
+		3EE99DD82B75CA570078C1FB /* InterestButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE99DD72B75CA570078C1FB /* InterestButton.swift */; };
+		3EE99DDA2B75CBA80078C1FB /* InterestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE99DD92B75CBA80078C1FB /* InterestsView.swift */; };
+		3EE99DDC2B75CC390078C1FB /* InterestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE99DDB2B75CC390078C1FB /* InterestsViewModel.swift */; };
+		3EE99DDE2B75D5540078C1FB /* DestinationSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE99DDD2B75D5540078C1FB /* DestinationSearchView.swift */; };
 		3EEC50952B69AB20003D3A3E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50942B69AB20003D3A3E /* FirebaseAnalytics */; };
 		3EEC50972B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50962B69AB20003D3A3E /* FirebaseAnalyticsOnDeviceConversion */; };
 		3EEC50992B69AB20003D3A3E /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEC50982B69AB20003D3A3E /* FirebaseAnalyticsSwift */; };
@@ -126,6 +130,10 @@
 		3ED5F16B2B7089CE0083AC0C /* DebugConfiguration.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfiguration.xcconfig; sourceTree = "<group>"; };
 		3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateItineraryView.swift; sourceTree = "<group>"; };
 		3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryOnboardingData.swift; sourceTree = "<group>"; };
+		3EE99DD72B75CA570078C1FB /* InterestButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestButton.swift; sourceTree = "<group>"; };
+		3EE99DD92B75CBA80078C1FB /* InterestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsView.swift; sourceTree = "<group>"; };
+		3EE99DDB2B75CC390078C1FB /* InterestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestsViewModel.swift; sourceTree = "<group>"; };
+		3EE99DDD2B75D5540078C1FB /* DestinationSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationSearchView.swift; sourceTree = "<group>"; };
 		3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "sylas-swiftui-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -234,10 +242,10 @@
 		3E5CA6D62B689899008AF2FA /* sylas_swiftui */ = {
 			isa = PBXGroup;
 			children = (
+				3EE99DD62B75C9FF0078C1FB /* view models */,
 				3ED5F1682B704BFF0083AC0C /* apis */,
 				3ED5F1612B6F0B110083AC0C /* views */,
 				3ECEB6F02B6B62C100A1C5F4 /* models */,
-				3ECEB6EB2B6B124A00A1C5F4 /* components */,
 				3EEC50CA2B69D033003D3A3E /* sylas-swiftui-Info.plist */,
 				3E269EC22B69A14A004DFF1C /* authentication */,
 				3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */,
@@ -264,6 +272,7 @@
 				3E26574F2B6A08D900599D76 /* DestinationCard.swift */,
 				3ED5F1662B7037080083AC0C /* MapThumbnail.swift */,
 				3E1CF3D42B71C2A500DDB0EA /* PredictedCityTileView.swift */,
+				3EE99DD72B75CA570078C1FB /* InterestButton.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -274,7 +283,6 @@
 				3ECEB6F32B6B62F400A1C5F4 /* Region.swift */,
 				3ECEB6F52B6B634900A1C5F4 /* Itinerary.swift */,
 				3ECEB6F72B6B63C800A1C5F4 /* SylasUser.swift */,
-				3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -282,6 +290,7 @@
 		3ED5F1612B6F0B110083AC0C /* views */ = {
 			isa = PBXGroup;
 			children = (
+				3ECEB6EB2B6B124A00A1C5F4 /* components */,
 				3ED5F15D2B6E90220083AC0C /* RootView.swift */,
 				3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */,
 				3E72E1F02B6955CB004136BB /* SignUpView.swift */,
@@ -289,6 +298,8 @@
 				3E26574D2B6A019400599D76 /* LoggedInHomeView.swift */,
 				3ED5F1622B6F1A4E0083AC0C /* ItineraryMapView.swift */,
 				3ED5F16C2B709CB00083AC0C /* CreateItineraryView.swift */,
+				3EE99DD92B75CBA80078C1FB /* InterestsView.swift */,
+				3EE99DDD2B75D5540078C1FB /* DestinationSearchView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -301,6 +312,15 @@
 				3EBED2662B72E1C100186F20 /* GeoDBCitiesAPI.swift */,
 			);
 			path = apis;
+			sourceTree = "<group>";
+		};
+		3EE99DD62B75C9FF0078C1FB /* view models */ = {
+			isa = PBXGroup;
+			children = (
+				3ED5F16E2B70A8220083AC0C /* ItineraryOnboardingData.swift */,
+				3EE99DDB2B75CC390078C1FB /* InterestsViewModel.swift */,
+			);
+			path = "view models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE99DDC2B75CC390078C1FB /* InterestsViewModel.swift in Sources */,
 				3E1CF3D52B71C2A500DDB0EA /* PredictedCityTileView.swift in Sources */,
 				3ECEB6F82B6B63C800A1C5F4 /* SylasUser.swift in Sources */,
 				3ED5F16D2B709CB00083AC0C /* CreateItineraryView.swift in Sources */,
@@ -455,6 +476,8 @@
 				3ED5F16F2B70A8220083AC0C /* ItineraryOnboardingData.swift in Sources */,
 				3ECEB6ED2B6B12A500A1C5F4 /* ItineraryView.swift in Sources */,
 				3E1CF3D32B71B13300DDB0EA /* GooglePlacesAPI.swift in Sources */,
+				3EE99DD82B75CA570078C1FB /* InterestButton.swift in Sources */,
+				3EE99DDA2B75CBA80078C1FB /* InterestsView.swift in Sources */,
 				3E5CA6DA2B689899008AF2FA /* UnauthenticatedHomeView.swift in Sources */,
 				3E269EC42B69A15D004DFF1C /* authenticator.swift in Sources */,
 				3E72E1F12B6955CB004136BB /* SignUpView.swift in Sources */,
@@ -465,6 +488,7 @@
 				3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */,
 				3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */,
 				3E26574C2B69FD7300599D76 /* CustomNavBar.swift in Sources */,
+				3EE99DDE2B75D5540078C1FB /* DestinationSearchView.swift in Sources */,
 				3E2657502B6A08D900599D76 /* DestinationCard.swift in Sources */,
 				3ECEB6F62B6B634900A1C5F4 /* Itinerary.swift in Sources */,
 				3E825E752B7565EF00A1B765 /* FlowLayout.swift in Sources */,

@@ -87,7 +87,7 @@ struct FlowLayout<B, T: Hashable, V: View>: View {
                binding: .constant(5),
                items: ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops"]) {
         
-        InterestButtonView(interestName: $0)
+        InterestButton(interest: $0)
         //            .padding(.vertical, 10)
         //            .padding(.horizontal, 20)
             .preferredColorScheme(.dark)
