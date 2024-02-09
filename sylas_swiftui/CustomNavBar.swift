@@ -11,21 +11,30 @@ struct CustomNavBar: View {
     var body: some View {
         HStack{
             HStack (spacing: 20) {
-                Image("madrid")
+                Image(systemName: "arrow.left")
                     .resizable()
-                    .scaledToFill()
-                    .frame(width: 50, height: 50)
-                    .clipShape(Circle())
-                VStack (alignment: .leading){
-                    Text("Hello,")
-                    Text("Victor Rivera")
-                }
+                    .scaledToFit()
+                    .frame(width: 20, height: 20)
+
             }
             Spacer()
             HambugerIcon()
         }
+//        .edgesIgnoringSafeArea(.top)
     }
 }
+
+//                Image("madrid")
+//                    .resizable()
+//                    .scaledToFill()
+//                    .frame(width: 50, height: 50)
+//                    .clipShape(Circle())
+//                VStack (alignment: .leading){
+//                    Text("Hello,")
+//                    Text("Victor Rivera")
+//                }
+//                Text("Itinerary")
+
 
 struct HambugerIcon: View {
     let lineWidth: CGFloat = 2

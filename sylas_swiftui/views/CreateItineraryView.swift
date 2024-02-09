@@ -61,13 +61,6 @@ struct CreateItineraryView: View {
     }
 }
 
-
-
-
-
-
-
-
 #Preview {
     CreateItineraryView()
         .preferredColorScheme(.dark)

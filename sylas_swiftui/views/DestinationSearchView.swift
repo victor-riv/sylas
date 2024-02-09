@@ -15,70 +15,54 @@ struct DestinationSearchView: View {
     
     var body: some View {
         VStack(alignment: .leading){
-            Text("Where would you like to go?")
-                .font(.headline)
-                .padding(.bottom, 20)
-            TextField("Enter a destination...", text: $viewModel.geoname)
-                .padding()
-                .background(Color(red: 0.2, green: 0.2, blue: 0.2))
-                .cornerRadius(12)
-                .foregroundColor(.white)
-                .onChange(of: viewModel.geoname) { oldValue, newValue in
-                    debouncer.debounce {
-                        Task {
-                            await fetchCities(query: newValue)
-                        }
-                    }
-                }
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding()
-        
-        ScrollView(showsIndicators: false) {
+            CustomNavBar()
+                .padding(.horizontal)
+                .padding(.bottom)
             
-            VStack(alignment: .leading, spacing: 20) {
-                ForEach(viewModel.cityPredictions, id: \.id) { prediction in
-                    HStack {
-                        PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).").onTapGesture {
-                            viewModel.select(city: prediction)
-                            isNavigationLinkActive = true
+            VStack(alignment: .leading) {
+                Text("Where would you like to go?")
+                    .font(.headline)
+                    .padding(.bottom, 20)
+                TextField("Enter a destination...", text: $viewModel.geoname)
+                    .padding()
+                    .background(Color(red: 0.2, green: 0.2, blue: 0.2))
+                    .cornerRadius(12)
+                    .foregroundColor(.white)
+                    .onChange(of: viewModel.geoname) { oldValue, newValue in
+                        debouncer.debounce {
+                            Task {
+                                await fetchCities(query: newValue)
+                            }
                         }
-                        Spacer()
                     }
-                    .padding(.leading, 5)
+                
+                ScrollView(showsIndicators: false) {
+                    VStack(alignment: .leading, spacing: 20) {
+                        ForEach(viewModel.cityPredictions, id: \.id) { prediction in
+                            HStack {
+                                PredictedCityTile(cityName: prediction.name, secondaryText: "\(prediction.region), \(prediction.country), \(prediction.countryCode).").onTapGesture {
+                                    viewModel.select(city: prediction)
+                                    isNavigationLinkActive = true
+                                }
+                                Spacer()
+                            }
+                            .padding(.leading, 5)
+                        }
+                    }
                 }
+                .frame(maxWidth: .infinity)
+                .padding()
+                Spacer()
+                // Use a hidden NavigationLink for programmatic navigation
+                NavigationLink(destination: InterestsView().navigationBarHidden(true), isActive: $isNavigationLinkActive) {
+                    EmptyView()
+                }
+                .padding(.top, 20)
+                .padding()
             }
+            .padding()
         }
-        .frame(maxWidth: .infinity)
-        .padding(.top, 30)
-        .padding()
-        Spacer()
-        // Use a hidden NavigationLink for programmatic navigation
-        NavigationLink(destination: InterestsView(), isActive: $isNavigationLinkActive) {
-            EmptyView()
-        }
-//        NavigationLink(destination: Text("Third Page")) {
-//            HStack {
-//                Spacer()
-//                HStack {
-//                    Text("Next")
-//                    Spacer()
-//                    Image(systemName: "chevron.right")
-//                }
-//                .frame(width: 70)
-//                .padding()
-//                .foregroundColor(Color.white)
-//                .background(Color.black)
-//                .cornerRadius(12)
-//                .overlay(
-//                    RoundedRectangle(cornerRadius: 12)
-//                        .stroke(Color.white, lineWidth: 1)
-//                )
-//            }
-//        }
-        .padding(.top, 20)
-        .padding()
-        
+        .navigationBarHidden(true) // Hide the navigation bar inherited from the parent view
     }
     
     @Sendable func fetchCities(query: String) async {
@@ -89,11 +73,9 @@ struct DestinationSearchView: View {
         
         do {
             let fetchedCities = try await GeoDBCitiesAPI().fetchCities(matching: query)
-            
             viewModel.cityPredictions = fetchedCities
         } catch {
             print("Failed to fetch cities: \(error.localizedDescription)")
-            
         }
     }
 }
