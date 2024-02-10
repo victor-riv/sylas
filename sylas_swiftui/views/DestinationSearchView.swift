@@ -23,18 +23,15 @@ struct DestinationSearchView: View {
                 Text("Where would you like to go?")
                     .font(.headline)
                     .padding(.bottom, 20)
-                TextField("Enter a destination...", text: $viewModel.geoname)
-                    .padding()
-                    .background(Color(red: 0.2, green: 0.2, blue: 0.2))
-                    .cornerRadius(12)
-                    .foregroundColor(.white)
+                
+                ClearableTextField(text: $viewModel.geoname, placeholder: "Enter a destination...")
                     .onChange(of: viewModel.geoname) { oldValue, newValue in
-                        debouncer.debounce {
-                            Task {
-                                await fetchCities(query: newValue)
+                                debouncer.debounce {
+                                    Task {
+                                        await fetchCities(query: newValue)
+                                    }
+                                }
                             }
-                        }
-                    }
                 
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 20) {
@@ -46,14 +43,13 @@ struct DestinationSearchView: View {
                                 }
                                 Spacer()
                             }
-                            .padding(.leading, 5)
+//                            .padding(.leading, 5)
                         }
                     }
                 }
                 .frame(maxWidth: .infinity)
-                .padding()
-                Spacer()
-                // Use a hidden NavigationLink for programmatic navigation
+                .padding(.top)
+            
                 NavigationLink(destination: InterestsView().navigationBarHidden(true), isActive: $isNavigationLinkActive) {
                     EmptyView()
                 }
@@ -62,7 +58,7 @@ struct DestinationSearchView: View {
             }
             .padding()
         }
-        .navigationBarHidden(true) // Hide the navigation bar inherited from the parent view
+        .navigationBarHidden(true) 
     }
     
     @Sendable func fetchCities(query: String) async {
@@ -79,6 +75,37 @@ struct DestinationSearchView: View {
         }
     }
 }
+
+struct ClearableTextField: View {
+    @Binding var text: String
+    var placeholder: String
+
+    var body: some View {
+        HStack {
+            TextField(placeholder, text: $text)
+                .padding(.leading, 10)
+                .foregroundColor(.white)
+
+            if !text.isEmpty {
+                Button(action: { self.text = "" }) {
+                    Image(systemName: "multiply.circle.fill")
+                        .foregroundColor(.gray)
+                        .padding(.trailing, 10)
+                }
+            }
+        }
+        .padding() // Adjust padding as needed
+        .background(Color(red: 0.2, green: 0.2, blue: 0.2))
+        .cornerRadius(12)
+        .overlay(
+            RoundedRectangle(cornerRadius: 12)
+                .stroke(Color.gray, lineWidth: 1)
+        )
+//        .animation(.default, value: text.isEmpty) // Add smooth transition
+//        .fixedSize(horizontal: false, vertical: true)  Prevent resizing
+    }
+}
+
 
 class Debouncer {
     private var cancellable: AnyCancellable?
