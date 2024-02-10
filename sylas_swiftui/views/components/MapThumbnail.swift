@@ -28,7 +28,7 @@ struct MapThumbnail: View {
 //                    }
             }
         }
-        .onChange(of: region) {
+        .onChange(of: region) { newValue in
             generateSnapshot()
         }
     }

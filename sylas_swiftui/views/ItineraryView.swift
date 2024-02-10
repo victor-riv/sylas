@@ -100,11 +100,11 @@ struct ItineraryView: View {
                 
             }
             Spacer()
-            NavigationLink(destination: ItineraryMapView(region: $region)){
-                MapThumbnail(region: $region)
-                    .frame(width: 85, height: 85)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-            }
+//            NavigationLink(destination: ItineraryMapView(region: $region)){
+//                MapThumbnail(region: $region)
+//                    .frame(width: 85, height: 85)
+//                    .clipShape(RoundedRectangle(cornerRadius: 20))
+//            }
         }
         .padding(.bottom, 20)
     }
@@ -136,7 +136,9 @@ struct Sticky: ViewModifier {
             .overlay(GeometryReader { proxy in
                 let f = proxy.frame(in: .named("itineraryContainer"))
                 Color.clear.onAppear{ frame = f}
-                    .onChange(of: f) { frame = f }
+                    .onChange(of: f) { newValue in
+                        frame = newValue
+                    }
             })
     }
 }

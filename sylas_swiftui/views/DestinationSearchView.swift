@@ -25,7 +25,7 @@ struct DestinationSearchView: View {
                     .padding(.bottom, 20)
                 
                 ClearableTextField(text: $viewModel.geoname, placeholder: "Enter a destination...")
-                    .onChange(of: viewModel.geoname) { oldValue, newValue in
+                    .onChange(of: viewModel.geoname) { newValue in
                         
                         // Avoid debouncer is text is cleared instantly with clear button
                         if newValue.isEmpty {
