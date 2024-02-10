@@ -64,9 +64,9 @@ struct sylas_swiftuiApp: App {
         WindowGroup {
             Group {
                 if authenticator.isAuthenticated {
-//                                        ItineraryView(geoname: "Madrid")
-                    CreateItineraryView()
-                        .environmentObject(itineraryOnboardingData)
+                                        ItineraryView(geoname: "Madrid")
+//                    CreateItineraryView()
+//                        .environmentObject(itineraryOnboardingData)
                 } else {
                     UnauthenticatedHomeView()
                 }

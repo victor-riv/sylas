@@ -100,11 +100,16 @@ struct ItineraryView: View {
                 
             }
             Spacer()
-//            NavigationLink(destination: ItineraryMapView(region: $region)){
+//            NavigationLink(destination: Text("Placeholder")){
 //                MapThumbnail(region: $region)
 //                    .frame(width: 85, height: 85)
 //                    .clipShape(RoundedRectangle(cornerRadius: 20))
 //            }
+            NavigationLink(destination: ItineraryMapView(region: $region)){
+                MapThumbnail(region: $region)
+                    .frame(width: 85, height: 85)
+                    .clipShape(RoundedRectangle(cornerRadius: 20))
+            }
         }
         .padding(.bottom, 20)
     }
