@@ -24,7 +24,7 @@ class GeoDBCitiesAPI {
         let (data, _) = try await URLSession.shared.data(for: request)
         
         let decodedResponse = try JSONDecoder().decode(CityResponse.self, from: data)
-        return decodedResponse.data
+        return decodedResponse.data.filter { $0.countryCode != "CN" || $0.countryCode != "RU" }
     }
 }
 
