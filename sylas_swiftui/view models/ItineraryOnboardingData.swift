@@ -13,13 +13,14 @@ class ItineraryOnboardingData: ObservableObject {
     @Published var cityPredictions: [City] = []
     @Published var selectedCity: City = City()
     @Published var selectedInterests: [String] = []
-     let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photograpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
+    private let fetchDebouncer = Debouncer(delay: 0.5)
+    let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photograpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
     
     func select(city: City) {
         guard selectedCity.id != city.id else {
             return
         }
-
+        
         selectedCity = city
         selectedInterests.removeAll()
     }
@@ -39,6 +40,55 @@ class ItineraryOnboardingData: ObservableObject {
             deselect(interest: interest)
         }
     }
+    
+    func fetchCitiesDebounced(query: String) async {
+        guard !query.isEmpty else {
+            DispatchQueue.main.async { [weak self] in
+                self?.cityPredictions = []
+            }
+            return
+        }
+        fetchDebouncer.debounce { [weak self] in
+            await self?.fetchCities(query: query)
+        }
+    }
+    
+    private func fetchCities(query: String) async {
+        guard !query.isEmpty else {
+            DispatchQueue.main.async { [weak self] in
+                self?.cityPredictions = []
+            }
+            return
+        }
+        
+        do {
+            let fetchedCities = try await GeoDBCitiesAPI().fetchCities(matching: query)
+            DispatchQueue.main.async { [weak self] in
+                self?.cityPredictions = fetchedCities
+            }
+        } catch {
+            DispatchQueue.main.async {
+                print("Failed to fetch cities: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    //    @Sendable func fetchCities(query: String) async {
+    //        guard !query.isEmpty else {
+    //            cityPredictions = []
+    //            return
+    //        }
+    //        debouncer.debounce {
+    //            Task {
+    //                do {
+    //                    let fetchedCities = try await GeoDBCitiesAPI().fetchCities(matching: query)
+    //                    self.cityPredictions = fetchedCities
+    //                } catch {
+    //                    print("Failed to fetch cities: \(error.localizedDescription)")
+    //                }
+    //            }
+    //        }
+    //    }
 }
 
 
