@@ -26,12 +26,18 @@ struct DestinationSearchView: View {
                 
                 ClearableTextField(text: $viewModel.geoname, placeholder: "Enter a destination...")
                     .onChange(of: viewModel.geoname) { oldValue, newValue in
-                                debouncer.debounce {
-                                    Task {
-                                        await fetchCities(query: newValue)
-                                    }
-                                }
+                        
+                        // Avoid debouncer is text is cleared instantly with clear button
+                        if newValue.isEmpty {
+                            viewModel.cityPredictions = []
+                            return
+                        }
+                        debouncer.debounce {
+                            Task {
+                                await fetchCities(query: newValue)
                             }
+                        }
+                    }
                 
                 ScrollView(showsIndicators: false) {
                     VStack(alignment: .leading, spacing: 20) {
@@ -43,13 +49,13 @@ struct DestinationSearchView: View {
                                 }
                                 Spacer()
                             }
-//                            .padding(.leading, 5)
+                            //                            .padding(.leading, 5)
                         }
                     }
                 }
                 .frame(maxWidth: .infinity)
                 .padding(.top)
-            
+                
                 NavigationLink(destination: InterestsView().navigationBarHidden(true), isActive: $isNavigationLinkActive) {
                     EmptyView()
                 }
@@ -58,7 +64,7 @@ struct DestinationSearchView: View {
             }
             .padding()
         }
-        .navigationBarHidden(true) 
+        .navigationBarHidden(true)
     }
     
     @Sendable func fetchCities(query: String) async {
@@ -79,13 +85,13 @@ struct DestinationSearchView: View {
 struct ClearableTextField: View {
     @Binding var text: String
     var placeholder: String
-
+    
     var body: some View {
         HStack {
             TextField(placeholder, text: $text)
                 .padding(.leading, 10)
                 .foregroundColor(.white)
-
+            
             if !text.isEmpty {
                 Button(action: { self.text = "" }) {
                     Image(systemName: "multiply.circle.fill")
@@ -101,8 +107,8 @@ struct ClearableTextField: View {
             RoundedRectangle(cornerRadius: 12)
                 .stroke(Color.gray, lineWidth: 1)
         )
-//        .animation(.default, value: text.isEmpty) // Add smooth transition
-//        .fixedSize(horizontal: false, vertical: true)  Prevent resizing
+        //        .animation(.default, value: text.isEmpty) // Add smooth transition
+        //        .fixedSize(horizontal: false, vertical: true)  Prevent resizing
     }
 }
 
