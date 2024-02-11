@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ClearableTextField: View {
-    @Binding var text: String
+    @Bindable var viewModel: ItineraryOnboardingData
     var placeholder: String
         
     var body: some View {
         HStack {
-            TextField(placeholder, text: $text)
+            TextField(placeholder, text: $viewModel.geoname)
                 .padding(.leading, 10)
                 .foregroundColor(.white)
             
-            if !text.isEmpty {
-                Button(action: { self.text = "" }) {
+            if !viewModel.geoname.isEmpty {
+                Button(action: { self.viewModel.geoname = "" }) {
                     Image(systemName: "multiply.circle.fill")
                         .foregroundColor(.gray)
                         .padding(.trailing, 10)
@@ -38,10 +38,8 @@ struct ClearableTextField: View {
 }
 
 struct ClearableTextField_Previews: PreviewProvider {
-    @State static var text = ""
-    
     static var previews: some View {
-        ClearableTextField(text: $text, placeholder: "Enter text here")
+        ClearableTextField(viewModel: ItineraryOnboardingData(), placeholder: "Enter text here")
             .padding()
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct InterestButton: View {
     @State var isSelected = false
-    @EnvironmentObject var viewModel: ItineraryOnboardingData
+    @Environment(ItineraryOnboardingData.self) private var viewModel
     var interest: String
     
     var body: some View {
@@ -38,5 +38,5 @@ struct InterestButton: View {
 #Preview {
     InterestButton(interest: "Wakesurfing")
         .preferredColorScheme(.dark)
-        .environmentObject(ItineraryOnboardingData())
+        .environment(ItineraryOnboardingData())
 }

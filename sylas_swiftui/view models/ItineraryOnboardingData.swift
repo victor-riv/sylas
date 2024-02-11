@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import Observation
 
-
-class ItineraryOnboardingData: ObservableObject {
-    @Published var geoname: String = ""
-    @Published var cityPredictions: [City] = []
-    @Published var selectedCity: City = City()
-    @Published var selectedInterests: [String] = []
+@Observable
+class ItineraryOnboardingData {
+     var geoname: String = ""
+     var cityPredictions: [City] = []
+     var selectedCity: City = City()
+     var selectedInterests: [String] = []
     private let fetchDebouncer = Debouncer(delay: 0.5)
     let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photograpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
     

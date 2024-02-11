@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DestinationSearchView: View {
-    @EnvironmentObject var viewModel: ItineraryOnboardingData
+    @Environment(ItineraryOnboardingData.self) private var viewModel
     @State private var isNavigationLinkActive = false
     private let debouncer = Debouncer(delay: 0.5)
     
@@ -23,8 +23,8 @@ struct DestinationSearchView: View {
                     .font(.headline)
                     .padding(.bottom, 20)
                 
-                ClearableTextField(text: $viewModel.geoname, placeholder: "Enter a destination...")
-                    .onChange(of: viewModel.geoname) { newValue in
+                ClearableTextField(viewModel: viewModel, placeholder: "Enter a destination...")
+                    .onChange(of: viewModel.geoname) { oldValue, newValue in
                         Task {
                             await viewModel.fetchCitiesDebounced(query: newValue)
                         }
@@ -61,5 +61,5 @@ struct DestinationSearchView: View {
 #Preview {
     DestinationSearchView()
         .preferredColorScheme(.dark)
-        .environmentObject(ItineraryOnboardingData())
+        .environment(ItineraryOnboardingData())
 }

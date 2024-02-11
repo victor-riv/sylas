@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct InterestsView: View {
-    @EnvironmentObject var viewModel: ItineraryOnboardingData
+    @Environment(ItineraryOnboardingData.self) private var viewModel
     
     var body: some View {
         VStack {
@@ -48,5 +48,5 @@ struct InterestsView: View {
 #Preview {
     InterestsView()
         .preferredColorScheme(.dark)
-        .environmentObject(ItineraryOnboardingData())
+        .environment(ItineraryOnboardingData())
 }

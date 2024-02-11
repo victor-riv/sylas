@@ -64,7 +64,7 @@ struct CreateItineraryView: View {
 #Preview {
     CreateItineraryView()
         .preferredColorScheme(.dark)
-        .environmentObject(ItineraryOnboardingData())
+        .environment(ItineraryOnboardingData())
 }
 
 
