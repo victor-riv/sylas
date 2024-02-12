@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import SwiftUI
 
 @Observable
 class ItineraryOnboardingData {
@@ -16,6 +17,13 @@ class ItineraryOnboardingData {
      var selectedInterests: [String] = []
     private let fetchDebouncer = Debouncer(delay: 0.5)
     let interests = ["Great Food", "Museums", "Shopping", "Hiking", "Beaches", "Coffee Shops", "Nightlife and Bars", "Concerts", "Theater", "Wine & Beer", "Photograpahy", "Tours", "Hidden Gems", "Tea", "Fishing"]
+    
+    var geoNameBinding: Binding<String> {
+        Binding(
+            get: { self.geoname },
+            set: { self.geoname = $0 }
+        )
+    }
     
     func select(city: City) {
         guard selectedCity.id != city.id else {
@@ -73,23 +81,6 @@ class ItineraryOnboardingData {
             }
         }
     }
-    
-    //    @Sendable func fetchCities(query: String) async {
-    //        guard !query.isEmpty else {
-    //            cityPredictions = []
-    //            return
-    //        }
-    //        debouncer.debounce {
-    //            Task {
-    //                do {
-    //                    let fetchedCities = try await GeoDBCitiesAPI().fetchCities(matching: query)
-    //                    self.cityPredictions = fetchedCities
-    //                } catch {
-    //                    print("Failed to fetch cities: \(error.localizedDescription)")
-    //                }
-    //            }
-    //        }
-    //    }
 }
 
 

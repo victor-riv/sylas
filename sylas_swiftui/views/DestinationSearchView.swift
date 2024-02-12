@@ -23,7 +23,7 @@ struct DestinationSearchView: View {
                     .font(.headline)
                     .padding(.bottom, 20)
                 
-                ClearableTextField(viewModel: viewModel, placeholder: "Enter a destination...")
+                ClearableTextField(text: viewModel.geoNameBinding, placeholder: "Enter a destination...")
                     .onChange(of: viewModel.geoname) { oldValue, newValue in
                         Task {
                             await viewModel.fetchCitiesDebounced(query: newValue)

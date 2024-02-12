@@ -141,9 +141,7 @@ struct Sticky: ViewModifier {
             .overlay(GeometryReader { proxy in
                 let f = proxy.frame(in: .named("itineraryContainer"))
                 Color.clear.onAppear{ frame = f}
-                    .onChange(of: f) { newValue in
-                        frame = newValue
-                    }
+                    .onChange(of: f) { frame = f }
             })
     }
 }
