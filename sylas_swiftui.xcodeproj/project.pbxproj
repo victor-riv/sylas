@@ -53,6 +53,7 @@
 		3E4633F92B69EA390021B851 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 3E4633F82B69EA390021B851 /* FacebookLogin */; };
 		3E595E0B2B78129100B131E2 /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0A2B78129100B131E2 /* ClearableTextField.swift */; };
 		3E595E0D2B781BEA00B131E2 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0C2B781BEA00B131E2 /* Debouncer.swift */; };
+		3E595E0F2B7A9A0F00B131E2 /* NewCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */; };
 		3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */; };
 		3E5CA6DA2B689899008AF2FA /* UnauthenticatedHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */; };
 		3E5CA6DC2B68989A008AF2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		3E269EC32B69A15D004DFF1C /* authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authenticator.swift; sourceTree = "<group>"; };
 		3E595E0A2B78129100B131E2 /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		3E595E0C2B781BEA00B131E2 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomNavBar.swift; sourceTree = "<group>"; };
 		3E5CA6D42B689899008AF2FA /* sylas_swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sylas_swiftui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sylas_swiftuiApp.swift; sourceTree = "<group>"; };
 		3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthenticatedHomeView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				3EE99DD72B75CA570078C1FB /* InterestButton.swift */,
 				3E595E0A2B78129100B131E2 /* ClearableTextField.swift */,
 				3E595E0C2B781BEA00B131E2 /* Debouncer.swift */,
+				3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				3E825E752B7565EF00A1B765 /* FlowLayout.swift in Sources */,
 				3EBED2672B72E1C100186F20 /* GeoDBCitiesAPI.swift in Sources */,
 				3E595E0B2B78129100B131E2 /* ClearableTextField.swift in Sources */,
+				3E595E0F2B7A9A0F00B131E2 /* NewCustomNavBar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

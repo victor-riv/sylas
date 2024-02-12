@@ -9,23 +9,17 @@ import SwiftUI
 
 struct LoggedInHomeView: View {
     var body: some View {
-        NavigationView {
-            VStack(alignment: .leading, spacing: 40) {
-                CustomNavBar()
-                VStack(alignment: .leading, spacing: 10) { // Explicit alignment
-                    Text("Let's Make")
-                        .font(.largeTitle)
-                    Text("Some Plans")
-                        .font(.largeTitle)
-                }
-                Spacer()
+        ZStack(alignment: .top) {
+            ScrollView {
+                Text("hello")
+                    .padding()
             }
-            .padding()
+            NewCustomNavBar()
         }
     }
 }
 
 
 #Preview {
-    LoggedInHomeView().preferredColorScheme(.dark)
+    LoggedInHomeView()
 }
