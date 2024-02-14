@@ -15,7 +15,7 @@ struct ClearableTextField: View {
         HStack {
             TextField(placeholder, text: $text)
                 .padding(.leading, 10)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
             
             if !text.isEmpty {
                 Button(action: { text = "" }) {
@@ -26,7 +26,7 @@ struct ClearableTextField: View {
             }
         }
         .padding() // Adjust padding as needed
-        .background(Color(red: 0.2, green: 0.2, blue: 0.2))
+//        .background(Color(red: 0.2, green: 0.2, blue: 0.2))
         .cornerRadius(12)
         .overlay(
             RoundedRectangle(cornerRadius: 12)

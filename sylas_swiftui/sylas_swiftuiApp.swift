@@ -64,7 +64,8 @@ struct sylas_swiftuiApp: App {
         WindowGroup {
             Group {
                 if authenticator.isAuthenticated {
-                    ItineraryView(geoname: "Madrid")
+//                    ItineraryView(geoname: "Madrid")
+                      LoggedInHomeView()
 //                    CreateItineraryView()
 //                        .environment(viewModel)
                 } else {
@@ -72,7 +73,7 @@ struct sylas_swiftuiApp: App {
                 }
             }
             .environmentObject(authenticator)
-            .preferredColorScheme(.dark)
+//            .preferredColorScheme(.dark)
         }
     }
 }

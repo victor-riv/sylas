@@ -98,7 +98,7 @@ struct LoginFormView: View {
             
             Button(action: submitLogin) {
                 ZStack {
-                    RoundedRectangle(cornerRadius: 10)
+                    RoundedRectangle(cornerRadius: 12)
                         .fill(Color(red: 224 / 255, green: 227 / 255, blue: 72 / 255))
                         .frame(height: 50)
                     

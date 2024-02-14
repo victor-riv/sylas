@@ -54,6 +54,7 @@
 		3E595E0B2B78129100B131E2 /* ClearableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0A2B78129100B131E2 /* ClearableTextField.swift */; };
 		3E595E0D2B781BEA00B131E2 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0C2B781BEA00B131E2 /* Debouncer.swift */; };
 		3E595E0F2B7A9A0F00B131E2 /* NewCustomNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */; };
+		3E595E112B7AC11200B131E2 /* SidewaysScrollingButtonNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E595E102B7AC11200B131E2 /* SidewaysScrollingButtonNavBar.swift */; };
 		3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */; };
 		3E5CA6DA2B689899008AF2FA /* UnauthenticatedHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */; };
 		3E5CA6DC2B68989A008AF2FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E5CA6DB2B68989A008AF2FA /* Assets.xcassets */; };
@@ -117,6 +118,7 @@
 		3E595E0A2B78129100B131E2 /* ClearableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClearableTextField.swift; sourceTree = "<group>"; };
 		3E595E0C2B781BEA00B131E2 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCustomNavBar.swift; sourceTree = "<group>"; };
+		3E595E102B7AC11200B131E2 /* SidewaysScrollingButtonNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidewaysScrollingButtonNavBar.swift; sourceTree = "<group>"; };
 		3E5CA6D42B689899008AF2FA /* sylas_swiftui.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sylas_swiftui.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5CA6D72B689899008AF2FA /* sylas_swiftuiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sylas_swiftuiApp.swift; sourceTree = "<group>"; };
 		3E5CA6D92B689899008AF2FA /* UnauthenticatedHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnauthenticatedHomeView.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				3E595E0A2B78129100B131E2 /* ClearableTextField.swift */,
 				3E595E0C2B781BEA00B131E2 /* Debouncer.swift */,
 				3E595E0E2B7A9A0F00B131E2 /* NewCustomNavBar.swift */,
+				3E595E102B7AC11200B131E2 /* SidewaysScrollingButtonNavBar.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				3ED5F1672B7037080083AC0C /* MapThumbnail.swift in Sources */,
 				3E5CA6D82B689899008AF2FA /* sylas_swiftuiApp.swift in Sources */,
 				3E26574E2B6A019400599D76 /* LoggedInHomeView.swift in Sources */,
+				3E595E112B7AC11200B131E2 /* SidewaysScrollingButtonNavBar.swift in Sources */,
 				3ED5F15E2B6E90220083AC0C /* RootView.swift in Sources */,
 				3E26574C2B69FD7300599D76 /* CustomNavBar.swift in Sources */,
 				3EE99DDE2B75D5540078C1FB /* DestinationSearchView.swift in Sources */,

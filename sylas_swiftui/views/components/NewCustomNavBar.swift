@@ -13,7 +13,7 @@ struct NewCustomNavBar: View {
             VStack {
                 HStack {
                     Text("Madrid, ES")
-                        .font(.largeTitle)
+                        .font(.largeTitle.weight(.bold))
                     Spacer()
                     Image("madrid")
                         .resizable()
@@ -27,36 +27,12 @@ struct NewCustomNavBar: View {
         .padding()
         .background(
                    RoundedRectangle(cornerRadius: 20) // Adjust corner radius as needed
-                       .fill(Color.red)
+                    .fill(.white)
                        .ignoresSafeArea(edges: .top)
                )
-               .padding(.top, -20)
-        
+        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 2)
     }
 }
-
-//struct NewCustomNavBar: View {
-//    var body: some View {
-//        VStack {
-//            HStack {
-//                Text("Madrid, ES")
-//                    .font(.largeTitle)
-//                Spacer()
-//                Image("madrid")
-//                    .resizable()
-//                    .scaledToFill()
-//                    .frame(width: 50, height: 50)
-//                    .clipShape(RoundedRectangle(cornerRadius: 12))
-//            }
-//            ClearableTextField(text: .constant("Meson El Boqueron"), placeholder: "Countries, regions or cities")
-//        }
-//        .padding() // Add padding to ensure content does not touch the edges
-//        .background(.white)
-//// Example background color, replace with your desired color
-//        .clipShape(RoundedBottomRectangle(cornerRadius: 20)) // Custom shape with rounded bottom corners
-//        .shadow(color: .gray.opacity(0.5), radius: 10, x: 0, y: 2) // Adds a subtle shadow
-//    }
-//}
 
 // Define a custom shape with rounded bottom corners
 struct RoundedBottomRectangle: Shape {
