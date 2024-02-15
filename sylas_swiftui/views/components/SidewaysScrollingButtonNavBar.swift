@@ -8,28 +8,23 @@
 import SwiftUI
 
 struct SidewaysScrollingButtonNavBar: View {
+    let views = ["Explore", "Must see", "Make a trip", "Places to eat"]
+    @State var selectedView: String = "Explore"
     var body: some View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
-                    Button("Explore") {
-                        // Action for Explore
+                    ForEach(views, id: \.self) { viewText in
+                        Button(action: {
+                            self.selectedView = viewText
+                        }, label: {
+                            Text(viewText)
+                                .padding(.horizontal)
+                                .padding(.vertical, 10)
+                                .background(viewText == selectedView ? Color(red: 254 / 255, green: 221 / 255, blue: 45 / 255) : .clear)
+                                .foregroundColor(.black)
+                                .cornerRadius(12)
+                        })
                     }
-                    .buttonStyle(ScrollingButtonStyle())
-
-                    Button("Must see") {
-                        // Action for Must see
-                    }
-                    .buttonStyle(ScrollingAlternateButtonStyle())
-
-                    Button("Make a trip") {
-                        // Action for Make a trip
-                    }
-                    .buttonStyle(ScrollingAlternateButtonStyle())
-
-                    Button("Place to eat") {
-                        // Action for Place to eat
-                    }
-                    .buttonStyle(ScrollingAlternateButtonStyle())
                 }
             }
         }
@@ -41,17 +36,6 @@ struct ScrollingButtonStyle: ButtonStyle {
             .padding(.horizontal)
             .padding(.vertical, 10)
             .background(Color(red: 254 / 255, green: 221 / 255, blue: 45 / 255))
-            .foregroundColor(.black)
-            .cornerRadius(12)
-            // You can add more styling here
-    }
-}
-
-struct ScrollingAlternateButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding(.horizontal)
-            .padding(.vertical, 10)
             .foregroundColor(.black)
             .cornerRadius(12)
             // You can add more styling here

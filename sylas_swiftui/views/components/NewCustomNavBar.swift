@@ -15,7 +15,7 @@ struct NewCustomNavBar: View {
                     Text("Madrid, ES")
                         .font(.largeTitle.weight(.bold))
                     Spacer()
-                    Image("madrid")
+                    Image("me")
                         .resizable()
                         .scaledToFill()
                         .frame(width: 50, height: 50)
